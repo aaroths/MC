@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+
+  {% block title %}<title>My Checkup</title>{% endblock %}
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="{% static 'css/MC.css' %}">
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-sm-1">
+      <!--<div class = "textBox">
+        {% if user.is_authenticated %}
+         <li>Welcome {{ user.get_username }} !</li>
+         <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+       {% else %}
+         <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+       {% endif %}
+     </div>
+   `</ul> -->
+
+    </div>
+
+    <div class="col-sm-8 ">
+      <div class = "nav">
+        <ul>
+          <li class = "nav"><a href="{% url 'home' %}">Home</a></li>
+          {% if user.is_authenticated %}
+           <li class ="nav"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+          {% else %}
+           <li class = "nav"><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+           <li class = "nav"><a href="{% url 'signup' %}">SignUp</a></li>
+          {% endif %}
+
+        </ul>
+      </div>
+      <div class = "page-header">
+        <h1>Welcome to My Checkup</h1>
+      </div>
+      {% block content %}{% endblock %}
+      </div>
+    </div>
+
+<!--<img src="{% static "MC/static/images/one.jpg" %}"
+alt="Sunrise" style="width:555px;height:400px;"/> -->
+
+</body>
+</html>

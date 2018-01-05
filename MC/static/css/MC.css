@@ -1,0 +1,35 @@
+.page-header {
+    background-color: #B673C1;
+    margin-top: 20px;
+    padding: 20px 20px 20px 40px;
+}
+
+.textBox {
+  background-color: #B673C1;
+  padding: 20px;
+  margin-top: 20px;
+  font-size: 1.5eM;
+}
+
+li.nav {
+  display:inline;
+  float:left;
+  padding: 8px;
+  background-color: #dddddd;
+}
+
+h1{
+}
+
+h2{
+  color: #B673C1;
+}
+
+p {
+  color: #000;
+  padding: 100 px;
+}
+
+body {
+    padding-left: 15px;
+}

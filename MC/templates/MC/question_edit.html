@@ -1,0 +1,13 @@
+{% extends 'generic.html' %}
+
+{% block content %}
+    <h1>New Check-Up Statement</h1>
+    <br>
+    <p>This statement is something you tend to do/be/think when you are well</p>
+    <p> <i>Eg: I am eat healthy; I go to the gym most days </i><p>
+    <br>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'generic.html' %}
+
+{% block content %}
+  <p> Author:{{ user.get_username }}</p>
+
+  {% for question in questions %}
+        <p> {{forloop.counter}}) {{ question.text }} </p>
+  {% endfor %}
+  <br>
+  <br>
+  <p> How many of these statements apply to you right now?  If not many apply, you may be in a different mindset, and it may be one that you find unhealthy or different</p>
+  <p> <a href="{% url 'delete_question' %}">Delete Entries </a></p>
+
+{% endblock %}
