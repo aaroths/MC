@@ -1,23 +1,42 @@
 {% extends 'generic.html' %}
+{% load static %}
 
   {% block content %}
-  {% if user.is_authenticated %}
 
+  {% if user.is_authenticated %}
   <H2>Welcome {{ user.get_username }} ! </H2>
   {% endif %}
+
+  <div class = "textbox">
   <p>My CheckUp is new way for you to support yourself. We all have normal ups and downs, but sometimes we get stuck in a bad spot. MyCheckup gives you a way out and an early warning sign before you get too stuck.</p1>
-  <br>
-  <br>
+  </div>
+
   <h2> <strong>Your CheckUp</strong></h2>
+  <div class = "textbox2">
   <p>Make a list of 5 statements AND/OR choose from the sample statements. When you feel well and equilibrated, there are certain interests, thoughts or feelings you tend to have. Try to capture these in your statements. When you are in a "well" state of mind, this statements apply to you.</p1>
-  <br>
-  <br>
+  </div>
+
     {% if user.is_authenticated %}
      <h2><a href="{% url 'new_question' %}">Create your Statements</a></h2>
      <br>
      <br>
      <h2><a href="{% url 'all_questions' %}">Show Your Checkup</a></h2>
+    {% else %}
+
+      <h4> Please <a href="{% url 'login'%}">Login</a> or <a href="{% url 'signup' %}">Sign Up </a></h4>
+      <div class = "textbox2">
+      <p><b> Why participate?</b></p>
+      <p>Your CheckUp is a commitment to getting to know yourself and to finding the person you enjoy being. This tool is currently being developped, and can promise no studied outcomes. By participating, we hope you will give us feedback make this tool as useful as possible and to study its uses. We believe Your Checkup can act to improve your sense of identity and also to warn you when your mindset is changing.</p>
+    </div>
+
+      <div class = "image1">
+        <img src="{% static 'one.jpg' %}" alt="My image" style="width:750px;height:300px;"/>
+        <p>MyCheckUp can be like a Sunrise on a Winter's Day</p>
+      </div>
     {% endif %}
+
+
+
 
 
 
