@@ -3,18 +3,21 @@
 {% block content %}
   <h2> {{ user.get_username }}'s CheckUp</h2>
 
-  <div class = "textbox">
-  {% for question in questions %}
-        <p> {{forloop.counter}}) {{ question.text }} </p>
-  {% endfor %}
-  </div>
-  
-  <div class = "textbox2">
-  <p> How many of these statements apply to you right now?  If not many apply, you may be in a different mindset, and it may be one that you find unhealthy or different</p>
-  </div>
+<h4> In the past week, I generally: </h4>
 
-  <div class = "textbox2">
-  <p>Made a mistake with a statement? Realize that a statement was not as important as you thought?</p>
-  <p> <a href="{% url 'delete_question' %}">Delete Entries </a></p>
+
+  {% for key, val in questions %}
+  {%if val == None%}
+    <div class = "statement_{{key}}">
+      <p><a href={% url 'statement_input' statement=key %}> Create a new statement </a></p>
+    </div>
+  {%else%}
+    <div class = "statement_{{key}}">
+      <p>{{ key }}) <a href={% url 'statement_input' statement=key %}>{{val}}</a></p>
+    </div>
+  {%endif%}
+
+  {% endfor %}
+<p> Click a statement to edit it!</p>
 
 {% endblock %}

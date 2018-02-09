@@ -29,7 +29,7 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 from django.shortcuts import redirect
-from .forms import QuestionForm
+from .forms import QuestionForm,StatementForm
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 
@@ -40,24 +40,38 @@ def new_question(request):
         if form.is_valid():
             question = form.save(commit=False)
             question.author = request.user
-            question.published_date = timezone.now()
             question.save()
             return redirect('question_detail', pk=question.pk)
     else:
         form = QuestionForm()
     return render(request, 'MC/question_edit.html', {'form': form})
 
+def statement_input(request,statement):
+    user = request.user
+    sampleList= Question.objects.current_for_user(user)
+    if request.method == "POST":
+        form = StatementForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.author = request.user
+            question.statementNumber=statement
+            question.save()
+            return redirect('question_detail', pk=question.pk)
+    else:
+        form = StatementForm()
+    return render(request, 'MC/statement_input.html', {'form': form},{'sampleList': sorted(sampleList.items())})
+
+
 def question_detail(request, pk):
     question = get_object_or_404(Question, pk=pk)
     return render(request, 'MC/question_detail.html',{'question': question})
 
 from django.contrib.auth.models import User
-#user = User.objects.get(user=request.user)
 
 def all_questions(request):
     user = request.user
-    questions = Question.objects.filter(author=user)
-    return render(request, 'MC/all_questions.html',{'questions': questions})
+    questions = Question.objects.current_for_user(user)
+    return render(request, 'MC/all_questions.html',{'questions': sorted(questions.items())})
 
 def delete_question(request):
     user = request.user

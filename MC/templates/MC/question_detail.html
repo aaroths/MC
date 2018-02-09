@@ -1,10 +1,14 @@
 {% extends 'generic.html' %}
 
 {% block content %}
-        <p> Your Question: {{ question.text }}
-        <p> By {{ question.author }}</p>
-        <br>
-        <p> Go to your <a href="{% url 'all_questions' %}"> question list.</a>
+
+
+      <div class ="statement_{{question.statementNumber}}">
+        <p> Your new Statement: </p>
+        <h1 style="color:white">{{ question.text }}</h1>
+      </div>
+
+        <h2><a href="{% url 'all_questions' %}"> Go to My CheckUp.</h2>
 
 
 {% endblock %}

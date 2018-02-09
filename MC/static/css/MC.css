@@ -4,6 +4,7 @@
     border-color: #000;
     background-color: #B673C1;
     text-align: center;
+    vertical-align:middle;
     margin-top: 20px;
     padding: 20px 20px 20px 40px;
 }
@@ -12,6 +13,63 @@
   background-color: #F4B1FF;
   padding: 20px;
   margin-top: 20px;
+  font-size: 1.5eM;
+  opacity: 1;
+}
+
+a:link {
+    color:#000;
+}
+a:visited {
+    color:#000;
+}
+a:hover {
+  font-size: 1.1eM;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.statement_1 {
+  background-color: #CE7088;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 1.5eM;
+  opacity: 1;
+}
+
+.statement_2 {
+  background-color: #D876C0;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 1.5eM;
+  opacity: 1;
+}
+
+.statement_3 {
+  background-color: #B673C1;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 1.5eM;
+  opacity: 1;
+}
+
+.statement_4 {
+  background-color: #AF76D8;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 1.5eM;
+  opacity: 1;
+}
+
+.statement_5 {
+  background-color: #8E70CE;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   font-size: 1.5eM;
   opacity: 1;
 }
@@ -36,8 +94,14 @@ li.nav {
   display:inline;
   float:left;
   padding: 8px;
-  background-color: #dddddd;
+  background-color: #F4B1FF;
 }
+
+.nav:hover {
+  background-color: #fff;
+  transition-duration:0.8s;
+}
+
 
 h1{
 }
