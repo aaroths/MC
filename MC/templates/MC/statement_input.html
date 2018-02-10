@@ -10,16 +10,24 @@
           <button type="submit" class="save btn btn-default">Save</button>
         </form>
 
+    <p>Your current Statement is:
+    {% for key, val in questions %}
+      {% if key == statement %}
+         <strong>{{ val }}</strong></p>
+      {% endif %}
+    {% endfor %}
+    <p>{{question.statementNumber}}</p>
+
   <div class="textbox2">
-    <h2>This statement is...</h2>
+    <h2>A statement is...</h2>
     <p> ...Something you DO or THINK or FEEL when you are generally well</p>
     <p> ... May result in you feeling well</p>
     <p> ... Or you may do this because you are well</p>
   </div>
 
 
-  <h2> Sample List </h2>
-  {% for key, val in sampleList %}
+  <h2> Sample My CheckUp </h2>
+  {% for key, val in sample %}
     <div class = "statement_{{key}}">
       <p>{{ key }}) {{val}}</p>
     </div>

@@ -3,12 +3,15 @@ from .models import Question
 from . import views
 
 def home(request):
-    return render(request,'MC/content.html')
-
-"""
-def link(request):
-    return render(request, 'blog/link.html')
-"""
+    sampleUser = "1"
+    sample = Question.objects.current_for_user(sampleUser)
+    if request.user.is_authenticated:
+        user = request.user
+        questions = Question.objects.current_for_user(user)
+    else:
+        user = request.user
+        questions = Question.objects.current_for_user(sampleUser)
+    return render(request,'MC/content.html',{'sample':sorted(sample.items()),'questions':sorted(questions.items())})
 
 #allows user to SIGN UP
 from django.contrib.auth import login, authenticate
@@ -48,7 +51,9 @@ def new_question(request):
 
 def statement_input(request,statement):
     user = request.user
-    sampleList= Question.objects.current_for_user(user)
+    sampleUser = "1"
+    questions = Question.objects.current_for_user(user)
+    sample = Question.objects.current_for_user(sampleUser)
     if request.method == "POST":
         form = StatementForm(request.POST)
         if form.is_valid():
@@ -59,8 +64,8 @@ def statement_input(request,statement):
             return redirect('question_detail', pk=question.pk)
     else:
         form = StatementForm()
-    return render(request, 'MC/statement_input.html', {'form': form},{'sampleList': sorted(sampleList.items())})
 
+    return render(request,'MC/statement_input.html',{'form': form,'questions': sorted(questions.items()),'statement':statement,'sample':sorted(sample.items())})
 
 def question_detail(request, pk):
     question = get_object_or_404(Question, pk=pk)
