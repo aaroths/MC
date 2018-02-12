@@ -42,3 +42,63 @@ class Question(models.Model):
 
     def __str__(self):
         return self.text
+
+class ScoreManager (models.Manager):
+    def get_userset(self,user):
+
+        UserScores = Score.objects.filter(author=user)
+        #UserScores = Score.objects.filter(author=user).count()
+
+        return UserScores
+
+
+#class ScoreManager(models.Manager):
+#    def current_for_user(self,user):
+#        date = Score.objects.filter(author=user,).order_by('-id').first()
+#        oneScored = Score.oneScore.filter(author=user).order_by('-id').first()
+#        twoScored = Score.twoScore.filter(author=user).order_by('-id').first()
+#        threeScored = Score.threeScore.filter(author=user).order_by('-id').first()
+#        fourScored = Score.fourScore.filter(author=user).order_by('-id').first()
+#        fiveScored = Score.fiveScore.filter(author=user).order_by('-id').first()
+
+#        score_list = {"1":oneScored,
+#                        "2":twoScored,
+#                        "3":threeScored,
+#                        "4":fourScored,
+#                        "5":fiveScored,
+#                        "6":date}
+#        return score_list
+
+class Score(models.Model):
+
+    yesno = ((0,"No"),(1,"Yes"),)
+    bigfive = ((0,"Really Bad"),
+               (1,"Poorly"),
+               (2,"Ok"),
+               (3,"Pretty Good"),
+               (4,"Really Good"),)
+
+    statementNumber=models.IntegerField(default='1',verbose_name="The number of the statement")
+    author = models.ForeignKey('auth.User')
+    date_created = models.DateTimeField(blank=False, null=False)
+    onepk=models.IntegerField(default='1')
+    twopk=models.IntegerField(default='1')
+    threepk=models.IntegerField(default='1')
+    fourpk=models.IntegerField(default='1')
+    fivepk=models.IntegerField(default='1')
+    oneScore = models.IntegerField(choices=yesno,default='none',verbose_name="statement 1")
+    twoScore = models.IntegerField(choices=yesno, default='none',verbose_name="statement 2")
+    threeScore = models.IntegerField(choices=yesno, default='none',verbose_name="statement 3")
+    fourScore= models.IntegerField(choices=yesno, default='none',verbose_name="statement 4")
+    fiveScore= models.IntegerField(choices=yesno, default='none',verbose_name="statement 5")
+    bigScore= models.IntegerField(choices=bigfive, default='3',verbose_name="How are you feeling over the past week?")
+
+    objects = models.Manager()
+    user_objects = ScoreManager()
+
+    def save(self, *args, **kwargs):
+        self.date_created = timezone.now()
+        super(Score, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return str(self.id)

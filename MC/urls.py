@@ -10,9 +10,6 @@ urlpatterns = [
     url(r'^all_questions$', views.all_questions, name='all_questions'),
     url(r'^delete_question$', views.delete_question, name='delete_question'),
     url(r'^statement_input/(?P<statement>\d)/$', views.statement_input, name='statement_input'),
+    url(r'^score$', views.score, name='score'),
+    url(r'^scoresheet/(?P<pk>\d+)/$', views.scoresheet, name='scoresheet'),
 ]
-
-"""
-
-    url(r'^check/$', views.home, name='home'),
-    """

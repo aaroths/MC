@@ -1,0 +1,37 @@
+{% extends 'generic.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h2>Check-In With Yourself</h2>
+<h4> In the past week, ask yourself if you generally did/felt/thought the things on your My CheckUp?</h4>
+
+<div class="row">
+  <div class="col-sm-6">
+    {% for key, val in questions %}
+      {%if val == None%}
+        <div class = "statement_{{key}}">
+          <p><a href={% url 'statement_input' statement=key %}> Create a new statement </a></p>
+        </div>
+      {%else%}
+        <div class = "statement_{{key}}">
+          <p>{{ key }}) {{val}}</p>
+        </div>
+      {%endif%}
+    {% endfor %}
+  </div>
+
+<div class="col-sm-6">
+
+<form method="POST" class="post-form">{% csrf_token %}
+  <table border="1">
+  {{ form | crispy }}
+  </table>
+  <button type="submit" class="save btn btn-default">Save</button>
+</form>
+
+</div>
+
+
+
+{% endblock%}

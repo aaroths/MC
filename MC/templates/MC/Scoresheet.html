@@ -1,0 +1,27 @@
+{% extends 'generic.html' %}
+{% block content %}
+
+<h2> Check-In Complete! </h2>
+
+<p>You have performed {{scores}} Check-Ins with yourself</p>
+<br>
+<br>
+<p>The data has been saved. Unfortunately I am still having trouble doing anything worthwhile with it ;) , ie hold tight.</p>
+
+<h2><a href="{% url 'home' %}">Back to My CheckUp</a> </h2>
+
+
+
+{% for key, val in score %}
+
+    <p>{{ key }}){{val}}</p>
+
+{% endfor %}
+
+{% for x in score %}
+    <p>{{x}} {{score}}</p>
+{% endfor %}
+
+
+
+{%endblock%}

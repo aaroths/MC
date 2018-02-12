@@ -27,18 +27,19 @@
       {% for key, val in questions %}
         {%if val == None%}
           <div class = "statement_{{key}}">
-            <p><a href={% url 'statement_input' statement=key %}> Create a new statement </a></p>
+            <p> Create a new statement</p>
           </div>
         {%else%}
           <div class = "statement_{{key}}">
-            <p>{{ key }}) <a href={% url 'statement_input' statement=key %}>{{val}}</a></p>
+            <p>{{ key }}) {{val}}</p>
           </div>
         {%endif%}
       {% endfor %}
      <br>
-     <h1 ><center><a href="{% url 'all_questions' %}">Just See MyCheckUp</center></a></h1>
+     <h1 ><center><a href="{% url 'all_questions' %}">Edit MyCheckUp</center></a></h1>
      <div class = "image1"><img src="{% static 'MC.png' %}" alt="My image" style="width:100px;height:100px"/></div>
-
+     <h1 ><center><a href="{% url 'score' %}">Time to Check-In</center></a></h1>
+     <div class = "image1"><img src="{% static 'MC.png' %}" alt="My image" style="width:100px;height:100px"/></div>
 
     {% else %}
     <h2> Sample My CheckUp </h2>
