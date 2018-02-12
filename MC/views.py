@@ -115,5 +115,5 @@ def scoresheet (request,pk):
     #score = Score.objects.get(author=user)
     scores = Score.user_objects.get_userset(user).count()
 
-    return render(request, 'MC/scoresheet.html',{'scores':scores})
+    return render(request, 'MC/Scoresheet.html',{'scores':scores})
     #{'scores':sorted(scores.items())),,{'score':sorted(score.items())}
