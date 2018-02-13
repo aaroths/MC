@@ -3,25 +3,67 @@
 
 <h2> Check-In Complete! </h2>
 
-<p>You have performed {{scores}} Check-Ins with yourself</p>
+<h3>STATS</h3>
+<p>You have performed <b>{{scores}}</b> Check-Ins with yourself</p>
+
+<div class = "textbox">
+<p> You are doing <strong>{{scorenow}}/5</strong> of your statements regularly.
 <br>
+{%if scorenow > 3%}
+<p><b>You are definitely living true to your MyCheckUp.</b></p>
+<p> If you find that you are still not feeling great, may be a good time to try changing your My CheckUp Statements to make different intentions.</p>
+
+{%elif scorenow > 1%}
+<p><b>You are often not doing the things on Your MyCheckUp.</b> </p>
+<p> This may be a good moment to ask yourself if things are going OK. If you are struggling, that's OK - we all do sometimes. It may be time to make some changes or else reconsider your My CheckUp Questions.</p>
+{%else %}
+<h4>You are rarely if ever doing the things on Your MyCheckUp. </h4>
+<p> This might be a moment to reconsider whether you are coping OK or happy with where you are at. If it's temporary, no worries! If you find your scores low on a regular basis, think about asking someone for help or changing things up.
 <br>
-<p>The data has been saved. Unfortunately I am still having trouble doing anything worthwhile with it ;) , ie hold tight.</p>
+<p> We believe in you. </p>
+
+{%endif%}
+</div>
+
+<div class = "textbox2">
+<p> Your last two scores were:</p>
+<p>  <b>{{score2}}/5</b> on {{date2}} </p>
+<p>  <b>{{score3}}/5</b> on {{date3}}</p>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-sm-6">
+{% for key, val in questions %}
+  <div class = "statement_{{key}}">
+  <p>{{ key }}) {{val}}</p>
+  </div>
+{% endfor %}
+  </div>
+  <div class="col-sm-6">
+  <div class = "statement_1">
+  <p> You said Yes to this {{z1}}% of the time </p>
+  </div>
+  <div class = "statement_2">
+  <p> You said Yes to this {{z2}}% of the time </p>
+  </div>
+  <div class = "statement_3">
+  <p> You said Yes to this {{z3}}% of the time </p>
+  </div>
+  <div class = "statement_4">
+  <p> You said Yes to this {{z4}}% of the time </p>
+  </div>
+  <div class = "statement_5">
+  <p> You said Yes to this {{z5}}% of the time </p>
+  </div>
+</div>
+</div>
+
+
 
 <h2><a href="{% url 'home' %}">Back to My CheckUp</a> </h2>
 
 
-
-{% for key, val in score %}
-
-    <p>{{ key }}){{val}}</p>
-
-{% endfor %}
-
-{% for x in score %}
-    <p>{{x}} {{score}}</p>
-{% endfor %}
-
-
+<!--{{data}} -->
 
 {%endblock%}

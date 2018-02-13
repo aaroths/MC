@@ -52,22 +52,10 @@ class ScoreManager (models.Manager):
         return UserScores
 
 
-#class ScoreManager(models.Manager):
-#    def current_for_user(self,user):
-#        date = Score.objects.filter(author=user,).order_by('-id').first()
-#        oneScored = Score.oneScore.filter(author=user).order_by('-id').first()
-#        twoScored = Score.twoScore.filter(author=user).order_by('-id').first()
-#        threeScored = Score.threeScore.filter(author=user).order_by('-id').first()
-#        fourScored = Score.fourScore.filter(author=user).order_by('-id').first()
-#        fiveScored = Score.fiveScore.filter(author=user).order_by('-id').first()
-
-#        score_list = {"1":oneScored,
-#                        "2":twoScored,
-#                        "3":threeScored,
-#                        "4":fourScored,
-#                        "5":fiveScored,
-#                        "6":date}
-#        return score_list
+class DataManager (models.Manager):
+    def list(self,user):
+        result_list=Score.objects.filter(author=user).values().order_by("-id")
+        return result_list
 
 class Score(models.Model):
 
@@ -95,6 +83,7 @@ class Score(models.Model):
 
     objects = models.Manager()
     user_objects = ScoreManager()
+    data_objects = DataManager()
 
     def save(self, *args, **kwargs):
         self.date_created = timezone.now()

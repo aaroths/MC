@@ -114,6 +114,45 @@ def scoresheet (request,pk):
     #score = Score.objects.filter(author=user)
     #score = Score.objects.get(author=user)
     scores = Score.user_objects.get_userset(user).count()
+    data = Score.data_objects.list(user)
 
-    return render(request, 'MC/Scoresheet.html',{'scores':scores})
+    lastScore = data.first()
+    scorenow = lastScore["oneScore"]+lastScore["twoScore"]+lastScore["threeScore"]+lastScore["fourScore"]+lastScore["fiveScore"]
+    secondScore = data[1]
+    score2 = secondScore["oneScore"]+secondScore["twoScore"]+secondScore["threeScore"]+secondScore["fourScore"]+secondScore["fiveScore"]
+    score2date = secondScore["date_created"]
+    thirdScore = data[2]
+    score3 = thirdScore["oneScore"]+thirdScore["twoScore"]+thirdScore["threeScore"]+thirdScore["fourScore"]+thirdScore["fiveScore"]
+    score3date = thirdScore["date_created"]
+    import datetime
+    date2=score2date.strftime('%A %d/%m/%Y')
+    date3=score3date.strftime('%A %d/%m/%Y')
+
+    questions = Question.objects.current_for_user(user)
+
+    pk1=lastScore["onepk"]
+    pk2=lastScore["twopk"]
+    pk3=lastScore["threepk"]
+    pk4=lastScore["fourpk"]
+    pk5=lastScore["fivepk"]
+
+
+    x1 = Score.objects.filter(author=user,onepk=pk1).count()
+    y1=Score.objects.filter(author=user,onepk=pk1,oneScore=1).count()
+    z1=round(y1/x1*100,1)
+    x2 = Score.objects.filter(author=user,twopk=pk2).count()
+    y2=Score.objects.filter(author=user,twopk=pk2,twoScore=1).count()
+    z2=round(y2/x2*100,1)
+    x3 = Score.objects.filter(author=user,threepk=pk3).count()
+    y3=Score.objects.filter(author=user,threepk=pk3,threeScore=1).count()
+    z3=round(y3/x3*100,1)
+    x4 = Score.objects.filter(author=user,fourpk=pk4).count()
+    y4=Score.objects.filter(author=user,fourpk=pk4,fourScore=1).count()
+    z4=round(y4/x4*100,1)
+    x5 = Score.objects.filter(author=user,fivepk=pk5).count()
+    y5=Score.objects.filter(author=user,fivepk=pk5,fiveScore=1).count()
+    z5=round(y5/x5*100,1)
+
+
+    return render(request, 'MC/Scoresheet.html',{'scores':scores,'data':data,'scorenow':scorenow, 'score2':score2,'score3':score3,'questions': sorted(questions.items()), 'z1':z1, 'z2':z2,'z3':z3,'z4':z4,'z5':z5, 'date2':date2,'date3':date3})
     #{'scores':sorted(scores.items())),,{'score':sorted(score.items())}
