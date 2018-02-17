@@ -1,25 +1,53 @@
 from django.shortcuts import render
 from .models import Question,Score
 from . import views
+from django import forms
 
 def home(request):
     sampleUser = "1"
     sample = Question.objects.current_for_user(sampleUser)
+    mod = 0
     if request.user.is_authenticated:
         user = request.user
         questions = Question.objects.current_for_user(user)
+        if questions['1']== None or questions['2']== None or questions['3']== None or questions['4']== None or questions['5'] == None:
+            mod = 1
     else:
         user = request.user
         questions = Question.objects.current_for_user(sampleUser)
-    return render(request,'MC/content.html',{'sample':sorted(sample.items()),'questions':sorted(questions.items())})
+    return render(request,'MC/content.html',{'sample':sorted(sample.items()),'questions':sorted(questions.items()),'mod':mod})
+
+def about(request):
+    return render(request,'MC/about.html')
+
+def resources(request):
+    return render(request,'MC/resources.html')
 
 #allows user to SIGN UP
-from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
+from .forms import SignUpForm
+
+#def signup(request):
+#    if request.method == 'POST':
+#        form = UserCreationForm(request.POST)
+#        if form.is_valid():
+#            form.save()
+#            username = form.cleaned_data.get('username')
+#            raw_password = form.cleaned_data.get('password1')
+#            user = authenticate(username=username, password=raw_password)
+#            login(request, user)
+#            return redirect('home')
+#    else:
+#        form = UserCreationForm()
+#    return render(request, 'registration/signup.html', {'form': form})
+
+#https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html#basic-sign-up
+
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -28,7 +56,7 @@ def signup(request):
             login(request, user)
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
 
 from django.shortcuts import redirect
@@ -53,7 +81,7 @@ def statement_input(request,statement):
     user = request.user
     sampleUser = "1"
     questions = Question.objects.current_for_user(user)
-    sample = Question.objects.current_for_user(sampleUser)
+    sample= Question.objects.current_for_user(sampleUser)
     if request.method == "POST":
         form = StatementForm(request.POST)
         if form.is_valid():
@@ -73,10 +101,13 @@ def question_detail(request, pk):
 
 from django.contrib.auth.models import User
 
-def all_questions(request):
+def mycheckup(request):
     user = request.user
     questions = Question.objects.current_for_user(user)
-    return render(request, 'MC/all_questions.html',{'questions': sorted(questions.items())})
+    mod = 0
+    if questions['1']== None or questions['2']== None or questions['3']== None or questions['4']== None or questions['5'] == None:
+        mod = 1
+    return render(request, 'MC/mycheckup.html',{'questions': sorted(questions.items()),'mod':mod})
 
 def delete_question(request):
     user = request.user
@@ -92,8 +123,8 @@ def score(request):
     questions = Question.objects.current_for_user(user)
 
     if request.method == "POST":
-        questions = Question.objects.current_for_user(user)
         form = ScoreForm(request.POST)
+        questions = Question.objects.current_for_user(user)
         if form.is_valid():
             score = form.save(commit=False)
             score.author = request.user
@@ -105,7 +136,7 @@ def score(request):
             score.save()
             return redirect('scoresheet',pk=score.pk)
     else:
-        form = ScoreForm()
+        form = ScoreForm(questions)
 
     return render(request,'MC/score.html',{'form': form,'questions': sorted(questions.items())})
 
@@ -118,15 +149,29 @@ def scoresheet (request,pk):
 
     lastScore = data.first()
     scorenow = lastScore["oneScore"]+lastScore["twoScore"]+lastScore["threeScore"]+lastScore["fourScore"]+lastScore["fiveScore"]
-    secondScore = data[1]
-    score2 = secondScore["oneScore"]+secondScore["twoScore"]+secondScore["threeScore"]+secondScore["fourScore"]+secondScore["fiveScore"]
-    score2date = secondScore["date_created"]
-    thirdScore = data[2]
-    score3 = thirdScore["oneScore"]+thirdScore["twoScore"]+thirdScore["threeScore"]+thirdScore["fourScore"]+thirdScore["fiveScore"]
-    score3date = thirdScore["date_created"]
+    bigscorenow = lastScore["bigScore"]
+
+    score2 = 0
+    score3 = 0
+    date2= "Not yet completed"
+    date3= "Not yet completed"
+
     import datetime
-    date2=score2date.strftime('%A %d/%m/%Y')
-    date3=score3date.strftime('%A %d/%m/%Y')
+
+    if len(data)>2:
+        secondScore = data[1]
+        score2 = secondScore["oneScore"]+secondScore["twoScore"]+secondScore["threeScore"]+secondScore["fourScore"]+secondScore["fiveScore"]
+        score2date = secondScore["date_created"]
+        date2=score2date.strftime('%A %d/%m/%Y')
+        thirdScore = data[2]
+        score3 = thirdScore["oneScore"]+thirdScore["twoScore"]+thirdScore["threeScore"]+thirdScore["fourScore"]+thirdScore["fiveScore"]
+        score3date = thirdScore["date_created"]
+        date3=score3date.strftime('%A %d/%m/%Y')
+    elif len(data)>1:
+        secondScore = data[1]
+        score2 = secondScore["oneScore"]+secondScore["twoScore"]+secondScore["threeScore"]+secondScore["fourScore"]+secondScore["fiveScore"]
+        score2date = secondScore["date_created"]
+        date2=score2date.strftime('%A %d/%m/%Y')
 
     questions = Question.objects.current_for_user(user)
 
@@ -135,7 +180,6 @@ def scoresheet (request,pk):
     pk3=lastScore["threepk"]
     pk4=lastScore["fourpk"]
     pk5=lastScore["fivepk"]
-
 
     x1 = Score.objects.filter(author=user,onepk=pk1).count()
     y1=Score.objects.filter(author=user,onepk=pk1,oneScore=1).count()
@@ -154,5 +198,5 @@ def scoresheet (request,pk):
     z5=round(y5/x5*100,1)
 
 
-    return render(request, 'MC/Scoresheet.html',{'scores':scores,'data':data,'scorenow':scorenow, 'score2':score2,'score3':score3,'questions': sorted(questions.items()), 'z1':z1, 'z2':z2,'z3':z3,'z4':z4,'z5':z5, 'date2':date2,'date3':date3})
+    return render(request, 'MC/Scoresheet.html',{'scores':scores,'data':data,'scorenow':scorenow, 'bigscorenow':bigscorenow, 'score2':score2,'score3':score3,'questions': sorted(questions.items()), 'z1':z1, 'z2':z2,'z3':z3,'z4':z4,'z5':z5, 'date2':date2,'date3':date3})
     #{'scores':sorted(scores.items())),,{'score':sorted(score.items())}

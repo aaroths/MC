@@ -74,7 +74,7 @@ class Score(models.Model):
     threepk=models.IntegerField(default='1')
     fourpk=models.IntegerField(default='1')
     fivepk=models.IntegerField(default='1')
-    oneScore = models.IntegerField(choices=yesno,default='none',verbose_name="statement 1")
+    oneScore = models.IntegerField(choices=yesno,default='none')
     twoScore = models.IntegerField(choices=yesno, default='none',verbose_name="statement 2")
     threeScore = models.IntegerField(choices=yesno, default='none',verbose_name="statement 3")
     fourScore= models.IntegerField(choices=yesno, default='none',verbose_name="statement 4")

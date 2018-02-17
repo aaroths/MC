@@ -3,6 +3,10 @@
 
 {% block content %}
     <h1>New Check-Up Statement</h1>
+    <div class = "textbox2">
+      <p> Take some time to come up with your statements. They involve things you do, think, or feel when you are well. Think to a time when you felt well-equilibrated and happy, and think about the things you did, your mindset, or how you felt at that time. Try to capture those ideas in your statements.
+    </div>
+    <br>
         <form method="POST" class="post-form">{% csrf_token %}
           <table border="1">
           {{ form | crispy }}
@@ -19,10 +23,10 @@
     <p>{{question.statementNumber}}</p>
 
   <div class="textbox2">
-    <h2>A statement is...</h2>
-    <p> ...Something you DO or THINK or FEEL when you are generally well</p>
-    <p> ... May result in you feeling well</p>
-    <p> ... Or you may do this because you are well</p>
+    <h2>A statement is:</h2>
+    <ul> Something you DO or THINK or FEEL when you are generally well</ul></p>
+    <ul> May result in you feeling well</ul>
+    <ul> Or you may do this because you are well</ul>
   </div>
 
 

@@ -1,0 +1,30 @@
+{% extends 'generic.html' %}
+
+{% block content %}
+
+<h2> {{ user.get_username|title }}'s CheckUp</h2>
+
+<h4> Recently, I generally: </h4>
+
+
+  {% for key, val in questions %}
+  {%if val == None%}
+    <div class = "statement_{{key}}">
+      <p><a class = "mc" href={% url 'statement_input' statement=key %}> Create a new statement </a></p>
+    </div>
+  {%else%}
+    <div class = "statement_{{key}}">
+      <p>{{ key }}) <a class ="mc" href={% url 'statement_input' statement=key %}>{{val}}</a></p>
+    </div>
+  {%endif%}
+  {% endfor %}
+<p><b><i> Click a statement to edit</b></i></p>
+
+  {% if mod == 0 %}
+    <div class = "textbox2">
+    <h1 ><center><a href="{% url 'score' %}">Time to Check-In</center></a></h1>
+    </div>
+  {%endif%}
+
+
+{% endblock %}
