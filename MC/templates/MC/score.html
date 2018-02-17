@@ -5,24 +5,10 @@
 
 <h2>Check-In With Yourself</h2>
 
-<h4> In the past week, ask yourself if you generally did/felt/thought the things on your My CheckUp?</h4>
+<h4> Since your last Checkup, were you:</h4>
 
 <div class="row">
-  <div class="col-sm-6">
-    {% for key, val in questions %}
-      {%if val == None%}
-        <div class = "statement_{{key}}">
-          <p><a href={% url 'statement_input' statement=key %}> Create a new statement </a></p>
-        </div>
-      {%else%}
-        <div class = "statement_{{key}}">
-          <p>{{ key }}) {{val}}</p>
-        </div>
-      {%endif%}
-    {% endfor %}
-  </div>
-
-<div class="col-sm-6">
+<div class="col-sm-8">
 
 <form method="POST" class="post-form">{% csrf_token %}
   <table border="1">

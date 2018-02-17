@@ -1,10 +1,20 @@
 {% extends 'generic.html' %}
 {% block content %}
 
+<!--detects post checkup OR stats check based on pk delivered to url-->
+{%if pk == "0"%}
+<h2>{{ user.get_username|title }}'s Stats </h2>
+{% else %}
 <h2> Check-In Complete! </h2>
-
 <h3>STATS</h3>
+{% endif %}
+
+<div class = "textbox2">
 <p>You have performed <b>{{scores}}</b> Check-Ins with yourself</p>
+</div>
+
+{%if pk == "0"%}
+{% else %}
 
 <div class = "textbox">
 <p> You are doing <strong>{{scorenow}}/5</strong> of your statements regularly</p>
@@ -12,10 +22,10 @@
 
 {%if scorenow > 3%}
   {%if bigscorenow > 2%}
-  <p><b>You are definitely living true to Your CheckUp.</b></p>
+  <p><b>You are definitely living true to Your Checkup.</b></p>
   <p> Considering your Statements regularly can you keep you grounded and well. Good work!</p>
   {%else%}
-  <p><b>You are living true to Your CheckUp.</b></p>
+  <p><b>You are living true to Your Checkup.</b></p>
   <p> But you are still <b>not feeling great</b>. It may be a good time to try one of the following:
   <ul>
     <li>Stay the course. We all feel down sometimes - that's normal as long as it passes.</li>
@@ -27,16 +37,16 @@
   {%endif%}
 
 {%elif scorenow > 1%}
-<p><b>You are sometimes doing the things on Your CheckUp.</b> </p>
+<p><b>You are sometimes doing the things on Your Checkup.</b> </p>
   {%if bigscorenow > 2%}
   <p> However, you are still feeling good. This may mean:</p>
   <ul>
     <li>You feel good. Don't overthink it.</li>
-    <li>You feel good. But you could feel even better if you kept up with the things on Your CheckUp.</li>
-    <li><a href="{% url 'mycheckup' %}"> Edit Your Checkup</a>: Your CheckUp items could be reconsidered - what are you doing/thinking that keeps you doing well?</li>
+    <li>You feel good. But you could feel even better if you kept up with the things on Your Checkup.</li>
+    <li><a href="{% url 'mycheckup' %}"> Edit Your Checkup</a>: Your Checkup items could be reconsidered - what are you doing/thinking that keeps you doing well?</li>
   </ul>
   {%else%}
-  <p> This may be a good moment to ask yourself if things are going OK. If you are struggling, that's OK - we all do sometimes. It may be time to make some changes or else reconsider your My CheckUp Questions.</p>
+  <p> This may be a good moment to ask yourself if things are going OK. If you are struggling, that's OK - we all do sometimes. It may be time to make some changes or else reconsider your My Checkup Questions.</p>
   <p> <a href ="{% url 'resources' %}">Here are some resources</a> that you might find valuable</p>
   {%endif%}
 {%else %}
@@ -45,8 +55,8 @@
   <p> However, you are still feeling good. This may mean:</p>
   <ul>
     <li>You feel good. Don't overthink it.</li>
-    <li>You feel good. But you could feel even better if you kept up with the things on Your CheckUp.</li>
-    <li><a href="{% url 'mycheckup' %}"> Edit Your Checkup</a>: Your CheckUp items could be reconsidered - what are you doing/thinking that keeps you doing well? </li>
+    <li>You feel good. But you could feel even better if you kept up with the things on Your Checkup.</li>
+    <li><a href="{% url 'mycheckup' %}"> Edit Your Checkup</a>: Your Checkup items could be reconsidered - what are you doing/thinking that keeps you doing well? </li>
   </ul>
   {%else%}
   <p> This might be a moment to reconsider whether you are coping OK or happy with where you are at. If it's temporary, no worries! If you find your scores low on a regular basis, think about asking someone for help or changing things up.
@@ -58,11 +68,22 @@
 {%endif%}
 </div>
 
-<div class = "textbox2">
-<p> Your last two scores were:</p>
-<p>  <b>{{score2}}/5</b> on {{date2}} </p>
-<p>  <b>{{score3}}/5</b> on {{date3}}</p>
-</div>
+{% endif %}
+
+
+{%if pk == "0" %}
+  <div class = "textbox2">
+  <p>  <b>{{scorenow}}/5</b> on {{date1}}</p>
+  <p>  <b>{{score2}}/5</b> on {{date2}} </p>
+  <p>  <b>{{score3}}/5</b> on {{date3}}</p>
+  </div>
+{% else %}
+  <div class = "textbox2">
+  <p> Your last two scores were:</p>
+  <p>  <b>{{score2}}/5</b> on {{date2}} </p>
+  <p>  <b>{{score3}}/5</b> on {{date3}}</p>
+  </div>
+{% endif %}
 
 <br>
 <div class="row">

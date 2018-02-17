@@ -59,7 +59,7 @@ class DataManager (models.Manager):
 
 class Score(models.Model):
 
-    yesno = ((0,"No"),(1,"Yes"),)
+    yesno = ((1,"Yes"),(0,"No"),)
     bigfive = ((0,"Really Bad"),
                (1,"Poorly"),
                (2,"Ok"),
@@ -79,7 +79,7 @@ class Score(models.Model):
     threeScore = models.IntegerField(choices=yesno, default='none',verbose_name="statement 3")
     fourScore= models.IntegerField(choices=yesno, default='none',verbose_name="statement 4")
     fiveScore= models.IntegerField(choices=yesno, default='none',verbose_name="statement 5")
-    bigScore= models.IntegerField(choices=bigfive, default='3',verbose_name="How are you feeling over the past week?")
+    bigScore= models.IntegerField(choices=bigfive, default='3',verbose_name="How were you feeling?")
 
     objects = models.Manager()
     user_objects = ScoreManager()

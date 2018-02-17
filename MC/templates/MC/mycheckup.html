@@ -3,28 +3,30 @@
 {% block content %}
 
 <h2> {{ user.get_username|title }}'s CheckUp</h2>
+<h4><b> Click a statement to edit</b></h4>
 
-<h4> Recently, I generally: </h4>
-
+<br>
+<h4> Since I last checked in, I am generally: </h4>
 
   {% for key, val in questions %}
   {%if val == None%}
     <div class = "statement_{{key}}">
-      <p><a class = "mc" href={% url 'statement_input' statement=key %}> Create a new statement </a></p>
+      <p><a class = "mc" href={% url 'statement_input' statement=key edit=0  %}> Create a new statement </a></p>
     </div>
   {%else%}
     <div class = "statement_{{key}}">
-      <p>{{ key }}) <a class ="mc" href={% url 'statement_input' statement=key %}>{{val}}</a></p>
+      <p>{{ key }}) <a class ="mc" href={% url 'statement_input' statement=key edit=1 %}>{{val}}</a></p>
     </div>
   {%endif%}
   {% endfor %}
-<p><b><i> Click a statement to edit</b></i></p>
 
-  {% if mod == 0 %}
-    <div class = "textbox2">
-    <h1 ><center><a href="{% url 'score' %}">Time to Check-In</center></a></h1>
-    </div>
-  {%endif%}
+
+{% if mod == 0 %}
+  <br>
+  <h3 ><center><a class = "button" href="{% url 'score' %}">Time to Check-In</center></a></h3>
+  <br>
+{%endif%}
+
 
 
 {% endblock %}

@@ -23,7 +23,8 @@
           <a href="{% url 'home' %}"><li class = "nav">Home</li></a>
           <a href="{% url 'about' %}"><li class = "nav">About</li></a>
           {% if user.is_authenticated %}
-           <a href="{% url 'mycheckup' %}"><li class = "nav">MyCheckUp</li></a>
+           <a href="{% url 'mycheckup' %}"><li class = "nav">MyCheckup</li></a>
+           <a href={% url 'scoresheet' pk=0 %}><li class = "nav">Stats</li></a>
            <a href="{% url 'logout'%}?next=/"><li class ="nav2">Logout</li></a>
           {% else %}
            <a href="{% url 'signup' %}"><li class = "nav2">SignUp</li></a>

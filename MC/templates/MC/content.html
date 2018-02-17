@@ -7,13 +7,13 @@
   <H2>Welcome {{ user.get_username|title }} ! </H2>
   {% endif %}
 
-  <div class = "textbox2">
-  <p>  <b>My CheckUp</b> is new way for you to support yourself. We all have normal ups and downs, but sometimes we get stuck in a bad spot. <b>MyCheckup</b> gives you a way out and an early warning sign before you get too stuck.</p1>
+  <div class = "textbox">
+  <p>  <b>My Checkup</b> is new way for you to support yourself. We all have normal ups and downs, but sometimes we get stuck in a bad spot. <b>MyCheckup</b> gives you a way out and an early warning sign before you get too stuck.</p1>
   </div>
 
   {% if user.is_authenticated %}
   {%else%}
-    <h2> <strong>Your own My CheckUp</strong></h2>
+    <h2> <strong>Your own My Checkup</strong></h2>
     <div class = "textbox2">
     <p>You will work on creating a list of <b>5 statements</b>. When you feel well and equilibrated, there are certain <b>interests, thoughts or feelings</b> you tend to have. These will not describe every changing moment, but more a general feeling over a longer time-frame. When you are in a "well" state of mind, these statements usually apply to you.
     <br>
@@ -26,20 +26,22 @@
     <br>
     <!--shows CheckUp Only if all questions compelted-->
     {%if mod == 0 %}
-      <h1 ><center><a href="{% url 'score' %}">Time to Check-In</center></a></h1>
+      <br>
+      <h3><center><a class = "button" href="{% url 'score' %}">Time to Check-In</center></a></h3>
+      <br>
       <br>
     {% endif %}
 
-    <h1> {{user.get_username|title}}'s My CheckUp </h1>
+    <h1> {{user.get_username|title}}'s My Checkup </h1>
     <br>
     {% for key, val in questions %}
     {%if val == None%}
       <div class = "statement_{{key}}">
-        <p><a class = "mc" href={% url 'statement_input' statement=key %}> Create a new statement </a></p>
+        <p><a class = "mc" href={% url 'statement_input' statement=key edit=0 %}> Create a new statement </a></p>
       </div>
     {%else%}
       <div class = "statement_{{key}}">
-        <p>{{ key }}) <a class ="mc" href={% url 'statement_input' statement=key %}>{{val}}</a></p>
+        <p>{{ key }}) <a class ="mc" href={% url 'statement_input' statement=key edit=1 %}>{{val}}</a></p>
       </div>
     {%endif%}
     {% endfor %}
@@ -47,8 +49,8 @@
      <div class = "image1"><img src="{% static 'MC2.png' %}" alt="My image" style="width:106px;height:90px"/></div>
 
     {% else %}
-    <h2> Sample My CheckUp </h2>
-    <h4> In the past week, I generally:</h4>
+    <h2> Sample My Checkup </h2>
+    <h4> Since my last checkup, I am generally:</h4>
       {% for key, val in sample %}
         <div class = "statement_{{key}}">
         <p>{{ key }}) {{val}}</p>
