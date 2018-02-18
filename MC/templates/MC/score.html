@@ -5,17 +5,27 @@
 
 <h2>Check-In With Yourself</h2>
 
-<h4> Since your last Checkup, were you:</h4>
+<h4> Since your last Checkup, were you doing the following:</h4>
 
 <div class="row">
-<div class="col-sm-8">
+  <div class="col-sm-6">
+  {% for key, val in questions %}
+    <div class = "statement_{{key}}">
+    <p>{{ key }}) {{val}}</p>
+    </div>
+  {% endfor %}
+  </div>
 
-<form method="POST" class="post-form">{% csrf_token %}
-  <table border="1">
-  {{ form | crispy }}
-  </table>
-  <button type="submit" class="save btn btn-default">Save</button>
-</form>
+  <div class="col-sm-5">
+
+  <form method="POST" class="post-form">{% csrf_token %}
+    <table border="1">
+    {{ form | crispy }}
+    </table>
+    <button type="submit" class="save btn btn-default">Save</button>
+  </form>
+</div>
+
 
 </div>
 
