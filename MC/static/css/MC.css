@@ -140,7 +140,27 @@ ul {
   margin-bottom: 0px;
   font-size: 1.5eM;
   opacity: 1;
+}
 
+.statement_grey {
+  /*background-color: #8E70CE;*/
+  background-color:#EEEEEE;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 1.5eM;
+  opacity: 1;
+}
+.statement_color {
+  /*background-color: #8E70CE;*/
+  background-color:#FFC9C9;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 1.5eM;
+  opacity: 1;
 }
 
 .textbox {

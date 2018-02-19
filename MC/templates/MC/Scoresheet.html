@@ -86,34 +86,36 @@
 {% endif %}
 
 <br>
-<div class="row">
-  <div class="col-sm-6">
-{% for key, val in questions %}
-  <div class = "statement_{{key}}">
-  <p>{{ key }}) {{val}}</p>
-  </div>
-{% endfor %}
-  </div>
-  <div class="col-sm-6">
-  <div class = "statement_1">
-  <p> You said Yes to this {{z1}}% of the time </p>
-  </div>
-  <div class = "statement_2">
-  <p> You said Yes to this {{z2}}% of the time </p>
-  </div>
-  <div class = "statement_3">
-  <p> You said Yes to this {{z3}}% of the time </p>
-  </div>
-  <div class = "statement_4">
-  <p> You said Yes to this {{z4}}% of the time </p>
-  </div>
-  <div class = "statement_5">
-  <p> You said Yes to this {{z5}}% of the time </p>
-  </div>
-</div>
-</div>
 
 
+<div class = "row">
+<div class = "col-sm-8">
+<div class ="statement_color">
+<p><b>{{questions.1}}</b></p>
+<p> You said Yes to this {{z1}}% of the time </p>
+</div>
+
+<div class ="statement_grey">
+<p><b>{{questions.2}}</b></p>
+<p> You said Yes to this {{z2}}% of the time </p>
+</div>
+
+<div class ="statement_color">
+<p><b>{{questions.3}}</b></p>
+<p> You said Yes to this {{z3}}% of the time </p>
+</div>
+
+<div class ="statement_grey">
+<p><b>{{questions.4}}</b></p>
+<p> You said Yes to this {{z4}}% of the time </p>
+</div>
+
+<div class ="statement_color">
+<p><b>{{questions.5}}</b></p>
+<p> You said Yes to this {{z5}}% of the time </p>
+</div>
+</div>
+</div>
 
 <h2><a href="{% url 'home' %}">Back to My CheckUp</a> </h2>
 

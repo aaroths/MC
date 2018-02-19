@@ -138,12 +138,6 @@ def score(request):
         if form.is_valid():
             score = form.save(commit=False)
             questions = Question.objects.current_for_user(user)
-            #score.oneScore = oneScore
-            #score.twoScore = twoScore
-            #score.threeScore = threeScore
-            #score.fourScore = fourScore
-            #score.fiveScore = fiveScore
-            #score.bigScore = bigScore
             score.onepk = questions["1"].id
             score.twopk = questions["2"].id
             score.threepk= questions["3"].id
@@ -180,25 +174,11 @@ def scoresheet (request,pk):
     import datetime
 
     if len(data)>2:
-        #lastScore = data.first()
-        #scorenow = lastScore["oneScore"]+lastScore["twoScore"]+lastScore["threeScore"]+lastScore["fourScore"]+lastScore["fiveScore"]
-        #bigscorenow = lastScore["bigScore"]
-        #score1date=lastScore["date_created"]
-        #date1=score1date.strftime('%A %d/%m/%Y')
-        #secondScore = data[1]
-        #score2 = secondScore["oneScore"]+secondScore["twoScore"]+secondScore["threeScore"]+secondScore["fourScore"]+secondScore["fiveScore"]
-        #score2date = secondScore["date_created"]
-        #date2=score2date.strftime('%A %d/%m/%Y')
         thirdScore = data[2]
         score3 = thirdScore["oneScore"]+thirdScore["twoScore"]+thirdScore["threeScore"]+thirdScore["fourScore"]+thirdScore["fiveScore"]
         score3date = thirdScore["date_created"]
         date3=score3date.strftime('%A %d/%m/%Y')
     if len(data)>1:
-        #lastScore = data.first()
-        #scorenow = lastScore["oneScore"]+lastScore["twoScore"]+lastScore["threeScore"]+lastScore["fourScore"]+lastScore["fiveScore"]
-        #bigscorenow = lastScore["bigScore"]
-        #score1date= lastScore["date_created"]
-        #date1=score1date.strftime('%A %d/%m/%Y')
         secondScore = data[1]
         score2 = secondScore["oneScore"]+secondScore["twoScore"]+secondScore["threeScore"]+secondScore["fourScore"]+secondScore["fiveScore"]
         score2date = secondScore["date_created"]
@@ -231,5 +211,4 @@ def scoresheet (request,pk):
         z5=round(y5/x5*100,1)
 
 
-    return render(request, 'MC/Scoresheet.html',{'scores':scores,'data':data,'scorenow':scorenow,'date1':date1, 'bigscorenow':bigscorenow, 'score2':score2,'score3':score3,'questions': sorted(questions.items()), 'z1':z1, 'z2':z2,'z3':z3,'z4':z4,'z5':z5, 'date2':date2,'date3':date3,'pk':pk})
-    #{'scores':sorted(scores.items())),,{'score':sorted(score.items())}
+    return render(request, 'MC/Scoresheet.html',{'scores':scores,'data':data,'scorenow':scorenow,'date1':date1, 'bigscorenow':bigscorenow, 'score2':score2,'score3':score3,'questions': questions, 'z1':z1, 'z2':z2,'z3':z3,'z4':z4,'z5':z5, 'date2':date2,'date3':date3,'pk':pk})
