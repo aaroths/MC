@@ -199,7 +199,7 @@ form.post-form {
   display:inline;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 900px) {
 
 
 li.nav {
@@ -230,7 +230,7 @@ li.nav2 {
   text-decoration: underline;
 }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 900px) {
   li.nav {
     display: block !important;
     background-color: #fff;
@@ -266,6 +266,50 @@ li.nav2 {
   li.nav2:hover{
     opacity: 0.6;
   }
-
-
 }
+
+@media only screen
+    and (device-width : 414px)
+    and (device-height : 736px)
+    and (-webkit-device-pixel-ratio : 3) {
+
+      li.nav {
+        display: block !important;
+        background-color: #fff;
+        font-size: 1.3eM;
+        text-align: center;
+        text-decoration:none !important;
+        background-color:#FFC9C9;
+        padding: 12px 15px;
+        border-radius: 10px;
+        box-shadow: 0 6px 10px 0 rgba(0,0,0,0.4), 0 4px 12px 0 rgba(0,0,0,0);
+      }
+
+      .nav a{
+        text-decoration: none;
+      }
+
+      li.nav:hover{
+        opacity: 0.6;
+      }
+
+      li.nav2 {
+        display: block !important;
+        background-color: #fff;
+        font-size: 1.3eM;
+        text-align: center;
+        text-decoration:none !important;
+        background-color:#FFC9C9;
+        padding: 12px 15px;
+        border-radius: 10px;
+        box-shadow: 0 6px 10px 0 rgba(0,0,0,0.4), 0 4px 12px 0 rgba(0,0,0,0);
+      }
+
+      li.nav2:hover{
+        opacity: 0.6;
+      }
+    }
+
+
+
+    }
