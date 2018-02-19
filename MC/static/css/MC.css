@@ -22,6 +22,43 @@ body {
     padding-left: 15px;
 }
 
+label {
+  font-style: normal;
+  font-size: 1eM;
+}
+
+/*.apart {
+margin-top: 20px;
+}*/
+
+table {
+  background-color: #FFC9C9;
+  padding: 20px;
+  line-height: 1.5;
+  border-spacing: 20px 20px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-style: normal;
+
+}
+
+th {
+  height: 50px;
+}
+
+.apart {
+   padding-top: 1eM;
+   background-color: #fff;
+   vertical-align: middle;
+}
+
+.form {
+  padding: 20px;
+  line-height: 1.5;
+  font-style: normal;
+
+
+}
 
 a:link {
     color:#000;

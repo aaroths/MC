@@ -126,24 +126,36 @@ def url_redirect(request):
 def score(request):
     user = request.user
     questions = Question.objects.current_for_user(user)
+    yesno = ((1,"Yes"),(0,"No"),)
+    bigfive = ((0,"Really Bad"),
+               (1,"Poorly"),
+               (2,"Ok"),
+               (3,"Pretty Good"),
+               (4,"Really Good"),)
 
     if request.method == "POST":
         form = ScoreForm(request.POST)
-        questions = Question.objects.current_for_user(user)
         if form.is_valid():
             score = form.save(commit=False)
-            score.author = request.user
+            questions = Question.objects.current_for_user(user)
+            #score.oneScore = oneScore
+            #score.twoScore = twoScore
+            #score.threeScore = threeScore
+            #score.fourScore = fourScore
+            #score.fiveScore = fiveScore
+            #score.bigScore = bigScore
             score.onepk = questions["1"].id
             score.twopk = questions["2"].id
             score.threepk= questions["3"].id
             score.fourpk = questions["4"].id
-            score.fivepk =questions["5"].id
+            score.fivepk = questions["5"].id
+            score.author = request.user
             score.save()
             return redirect('scoresheet',pk=score.pk)
     else:
         form = ScoreForm(questions)
 
-    return render(request,'MC/score.html',{'form': form,'questions': sorted(questions.items())})
+    return render(request,'MC/score.html',{'form': form,'questions':questions,'yesno':yesno,'bigfive':bigfive})
 
 def scoresheet (request,pk):
     user = request.user

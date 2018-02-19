@@ -26,28 +26,13 @@ class StatementForm(forms.ModelForm):
         fields = ('text',)
 
 class ScoreForm(forms.ModelForm):
-
     class Meta:
         model = Score
         fields = ('oneScore','twoScore','threeScore','fourScore','fiveScore','bigScore')
-
         widgets = {
-            'oneScore': forms.RadioSelect,
-            'twoScore': forms.RadioSelect(),
-            'threeScore': forms.RadioSelect(),
-            'fourScore': forms.RadioSelect(),
-            'fiveScore': forms.RadioSelect(),
-        }
-
-    #def __init__(self, questions, *args, **kwargs):
-    #    super(ScoreForm,self).__init__(*args, **kwargs)
-
-        #self.fields.get('oneScore').label = questions["1"]
-        #self.fields.get('twoScore').label = questions["2"]
-        #self.fields.get('threeScore').label = questions["3"]
-        #self.fields.get('fourScore').label = questions["4"]
-        #self.fields.get('fiveScore').label = questions["5"]
-
-
-        #for num, question in questions.items():
-        #    self.fields.get('some_field').label = question
+        'oneScore': forms.RadioSelect,
+        'twoScore': forms.RadioSelect(),
+        'threeScore': forms.RadioSelect(),
+        'fourScore': forms.RadioSelect(),
+        'fiveScore': forms.RadioSelect(),
+    }
