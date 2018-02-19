@@ -199,7 +199,7 @@ form.post-form {
   display:inline;
 }
 
-@media screen and (min-width: 799px) {
+@media screen and (min-width: 900px) {
 
 
 li.nav {
@@ -230,7 +230,7 @@ li.nav2 {
   text-decoration: underline;
 }
 }
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 900px) {
   li.nav {
     display: block !important;
     background-color: #fff;
