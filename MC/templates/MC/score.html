@@ -12,58 +12,41 @@
     {% csrf_token %}
 
     <div class = "form">
-    <table>
-              <tr>
-                <td><label for="id_oneScore">{{questions.1}}</label></td>
-                <td><fieldset id="id_oneScore">
+              <p><label for="id_oneScore">{{questions.1}}</label><p>
+              <p><fieldset id="id_oneScore">
                       <input type="radio" name="oneScore" option value="1">Yes</option>
                       <input type="radio" name="oneScore" option value="0">No</option>
-                    </fieldset> </td>
-              </tr>
-              <tr>
-                <td><label for="twoScore">{{questions.2}}</label></td>
-                <td><fieldset id="id_twoScore">
+                    </fieldset> </p>
+                <p><label for="twoScore">{{questions.2}}</label></p>
+                <p><fieldset id="id_twoScore">
                       <input type="radio" name="twoScore" option value="1">Yes</option>
                       <input type="radio" name="twoScore" option value="0">No</option>
-                    </fieldset> </td>
-              </tr>
-              <tr>
-                <td><label for="id_threeScore">{{questions.3}}</label></td>
-                <td><fieldset id="id_threeScore">
+                    </fieldset> </p>
+                <p><label for="id_threeScore">{{questions.3}}</label></p>
+                <p><fieldset id="id_threeScore">
                       <input type="radio" name="threeScore" option value="1">Yes</option>
                       <input type="radio" name="threeScore" option value="0">No</option>
-                    </fieldset> </td>
-              </tr>
-              <tr>
-                <td><label for="id_name">{{questions.4}}</label></td>
-                <td><fieldset id="id_fourScore">
+                    </fieldset> </p>
+                <p><label for="id_name">{{questions.4}}</label></p>
+                <p><fieldset id="id_fourScore">
                       <input type="radio" name="fourScore" option value="1">Yes</option>
                       <input type="radio" name="fourScore" option value="0">No</option>
-                    </fieldset> </td>
-              </tr>
-              <tr>
-                <td><label for="id_name">{{questions.5}}</label></td>
-                <td><fieldset id="id_fiveScore">
+                    </fieldset> </p>
+                <p><label for="id_name">{{questions.5}}</label></p>
+                <p><fieldset id="id_fiveScore">
                       <input type="radio" name="fiveScore" option value="1">Yes</option>
                       <input type="radio" name="fiveScore" option value="0">No</option>
-                    </fieldset> </td>
-              </tr>
-
-              <tr class = "apart">
-                <td><label for="id_bigScore"><p><b>How have you been feeling?</b></p></label></td>
-                <td><select name="bigScore">
+                    </fieldset> </p>
+                <p><label for="id_bigScore"><b>How have you been feeling?</label></p>
+                <p><select name="bigScore">
                       <option value="4">Really Good</option>
                       <option value="3">Good</option>
                       <option value="3">OK</option>
                       <option value="3">Poorly</option>
                       <option value="3">Really Poorly</option>
-                  </select> </td>
-              </tr>
+                  </select> </p>
 
-    </table>
-
-
-    <button type="submit" class="save btn btn-default">Save</button>
+    <button type="submit" class="save btn btn-default">Check In</button>
     </div>
   </form>
 
