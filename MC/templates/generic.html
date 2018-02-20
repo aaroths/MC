@@ -28,8 +28,8 @@
            <a href={% url 'scoresheet' pk=0 %}><li class = "nav">Stats</li></a>
            <a href="{% url 'logout'%}?next=/"><li class ="nav2">Logout</li></a>
           {% else %}
-           <a href="{% url 'signup' %}"><li class = "nav2">SignUp</li></a>
-           <a href="{% url 'login'%}?next={{request.path}}"><li class = "nav2">Login</li></a>
+           <a href="{% url 'signup' %}?next=/"><li class = "nav2">SignUp</li></a>
+           <a href="{% url 'login'%}?next=/"><li class = "nav2">Login</li></a>
           {% endif %}
           <!--{% url 'logout'%}?next={{request.path}}-->
         </ul>
