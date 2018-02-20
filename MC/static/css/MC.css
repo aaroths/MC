@@ -231,9 +231,18 @@ li.nav2 {
 }
 }
 @media screen and (max-width: 799px) {
+
+  .nav ul {
+    margin: 0px; padding: 0px;
+
+  }
+
+  .nav li {
+    margin: 0px; padding: 0px;
+  }
   li.nav {
     display: block !important;
-    background-color: #fff;
+    margin-left:0px;
     font-size: 1.3eM;
     text-align: center;
     text-decoration:none !important;
