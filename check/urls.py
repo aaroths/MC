@@ -36,7 +36,7 @@ urlpatterns += [
 #redirects site from basic IP to /check
 from django.views.generic import RedirectView
 from django.conf.urls import url
-from django.core.urlresolvers import reverse_lazy
+#from django.core.urlresolvers import reverse_lazy
 
 urlpatterns += [url(r'^$', RedirectView.as_view(url='/MC/', permanent=True)),]
 urlpatterns += [url(r'accounts/profile$', RedirectView.as_view(url='/', permanent=True)),]

@@ -176,11 +176,14 @@ ul {
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
-  /*border-style: solid;
-  border-width: 3px;
-  border-color: #B673C1;*/
   margin-top: 20px;
   font-size: 1.5eM;
+  opacity: 1;
+}
+
+.textbox3 {
+  background-color: #EEEEEE;
+  font-size: 1eM;
   opacity: 1;
 }
 

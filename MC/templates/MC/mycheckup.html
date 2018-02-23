@@ -4,9 +4,10 @@
 
 <h2> {{ user.get_username|title }}'s CheckUp</h2>
 <h4><b> Click a statement to edit</b></h4>
-
 <br>
-<h4> Since I last checked in, I am generally: </h4>
+<div class = "textbox2">
+<p>Ask yourself: Are you generally...</p>
+</div>
 
   {% for key, val in questions %}
   {%if val == None%}
@@ -20,12 +21,28 @@
   {%endif%}
   {% endfor %}
 
+  {% if mod == 0 %}
+    <br>
+    <h3 ><center><a class = "button" href="{% url 'score' %}">Time to Check-In</center></a></h3>
+    <br>
+  {%endif%}
 
-{% if mod == 0 %}
-  <br>
-  <h3 ><center><a class = "button" href="{% url 'score' %}">Time to Check-In</center></a></h3>
-  <br>
-{%endif%}
+<div class = "textbox2">
+<p><b>What does it mean?</b></p>
+<ul>
+<li> MyCheckup is a way for you to think about your wellness.</li>
+<div class = "textbox3">
+<li> If you are able to incorporate your CheckUp statements into your life, great. This should be a sign you're on the right track.</li>
+</div>
+<li> If you still aren't feeling well, in spite of following your statements - you could give them more time or try changing them to shift your focus.</li>
+<div class = "textbox3">
+<li> If you aren't able to perform your CheckUp statements - no problem. This is common. You may have other worries, be too busy, or have other interests. If you want a change, consider re-thinking your statements. </li>
+</div>
+</ul>
+</div>
+
+
+
 
 
 

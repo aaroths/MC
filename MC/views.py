@@ -29,22 +29,6 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
 
-#def signup(request):
-#    if request.method == 'POST':
-#        form = UserCreationForm(request.POST)
-#        if form.is_valid():
-#            form.save()
-#            username = form.cleaned_data.get('username')
-#            raw_password = form.cleaned_data.get('password1')
-#            user = authenticate(username=username, password=raw_password)
-#            login(request, user)
-#            return redirect('home')
-#    else:
-#        form = UserCreationForm()
-#    return render(request, 'registration/signup.html', {'form': form})
-
-#https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html#basic-sign-up
-
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -63,19 +47,6 @@ from django.shortcuts import redirect
 from .forms import QuestionForm,StatementForm,ScoreForm
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
-
-# view for Question template
-#def new_question(request):
-#    if request.method == "POST":
-#        form = QuestionForm(request.POST)
-#        if form.is_valid():
-#            question = form.save(commit=False)
-#            question.author = request.user
-#            question.save()
-#            return redirect('question_detail', pk=question.pk)
-#    else:
-#        form = QuestionForm()
-#    return render(request, 'MC/question_edit.html', {'form': form})
 
 def statement_input(request,statement,edit):
     user = request.user
@@ -114,12 +85,6 @@ def mycheckup(request):
         mod = 1
     return render(request, 'MC/mycheckup.html',{'questions': sorted(questions.items()),'mod':mod})
 
-#def delete_question(request):
-#    user = request.user
-#    questions = Question.objects.filter(author=user)
-#    return render (request,'MC/delete_question.html',{'questions': questions})
-
-#redirect views
 def url_redirect(request):
     return HttpResponsePermanentRedirect("/MC")
 
@@ -153,8 +118,6 @@ def score(request):
 
 def scoresheet (request,pk):
     user = request.user
-    #score = Score.objects.filter(author=user)
-    #score = Score.objects.get(author=user)
     scores = Score.user_objects.get_userset(user).count()
     data = Score.data_objects.list(user)
     questions = Question.objects.current_for_user(user)

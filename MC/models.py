@@ -31,7 +31,7 @@ class Question(models.Model):
     statementNumber=models.IntegerField(choices=NUMBER, default='1',verbose_name="The number of the statement")
     text = models.CharField(max_length=500,help_text="Enter your text", verbose_name="New Statement")
     #text = models.TextField(help_text="Enter your Statement")
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey('auth.User',on_delete=models.PROTECT)
     date_created = models.DateTimeField(blank=False, null=False)
     objects=QuestionManager()
 
@@ -67,7 +67,7 @@ class Score(models.Model):
                (4,"Really Good"),)
 
     statementNumber=models.IntegerField(default='1',verbose_name="The number of the statement")
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey('auth.User',on_delete=models.PROTECT)
     date_created = models.DateTimeField(blank=False, null=False)
     onepk=models.IntegerField(default='1')
     twopk=models.IntegerField(default='1')
