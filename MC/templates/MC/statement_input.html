@@ -6,20 +6,12 @@
   {% if edit == "0" %}
     <h1>New Check-Up Statement</h1>
     <div class = "textbox2">
-      <p>Take some time to come up with your statements. Don't worry, you can edit them later. They involve things you <b>do, think, or feel</b> when you are well.</p>
+      <p>Input a statement. You can edit it later. Statements involve things you <b>do, think, or feel</b> when you are well.</p>
       <p>If you are having trouble coming up with these - <a href={% url 'statement_help' state=statement edits=edit %}>this should help.</a></p>
     </div>
     <br>
   {% else %}
     <h1>Edit Check-Up Statement</h1>
-  {% endif %}
-        <form method="POST" class="post-form">{% csrf_token %}
-          <table border="1">
-          {{ form | crispy }}
-          </table>
-          <button type="submit" class="save btn btn-default">Save</button>
-        </form>
-    {% if edit == "1" %}
     <div class = "textbox">
     <p>Your current Statement is:
     {% for key, val in questions %}
@@ -28,7 +20,13 @@
       {% endif %}
     {% endfor %}
     </div>
-    {% endif %}
+  {% endif %}
+        <form method="POST" class="post-form">{% csrf_token %}
+          <table border="1">
+          {{ form | crispy }}
+          </table>
+          <button type="submit" class="save btn btn-default">Save</button>
+        </form>
 
   {% if edit == "1" %}
   <div class = "textbox2">
@@ -36,6 +34,14 @@
   </div>
 
   {% else %}
+  <h2> Sample My Checkup </h2>
+  {% for key, val in sample %}
+    <div class = "statement_{{key}}">
+      <p>{{ key }}) {{val}}</p>
+    </div>
+
+  {% endfor %}
+  
   <div class="textbox2">
     <h2>A statement should:</h2>
     <ul>
@@ -47,13 +53,5 @@
 
   </div>
 
-
-  <h2> Sample My Checkup </h2>
-  {% for key, val in sample %}
-    <div class = "statement_{{key}}">
-      <p>{{ key }}) {{val}}</p>
-    </div>
-
-  {% endfor %}
   {% endif %}
 {% endblock %}

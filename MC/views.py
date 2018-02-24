@@ -175,3 +175,34 @@ def scoresheet (request,pk):
 
 
     return render(request, 'MC/Scoresheet.html',{'scores':scores,'data':data,'scorenow':scorenow,'date1':date1, 'bigscorenow':bigscorenow, 'score2':score2,'score3':score3,'questions': questions, 'z1':z1, 'z2':z2,'z3':z3,'z4':z4,'z5':z5, 'date2':date2,'date3':date3,'pk':pk})
+
+
+def otherscore (request,number):
+    user = request.user
+    data = Score.data_objects.list(user)
+    thisscore = data[int(number)]
+    otherdate= thisscore["date_created"]
+    firstpk = thisscore["onepk"]
+
+    question1 = Question.objects.filter(author=user,pk=thisscore["onepk"]).last()
+    question2 = Question.objects.filter(author=user,pk=thisscore["twopk"]).last()
+    question3 = Question.objects.filter(author=user,pk=thisscore["threepk"]).last()
+    question4 = Question.objects.filter(author=user,pk=thisscore["fourpk"]).last()
+    question5 = Question.objects.filter(author=user,pk=thisscore["fivepk"]).last()
+
+    one = thisscore["oneScore"]
+    two = thisscore["twoScore"]
+    three = thisscore["threeScore"]
+    four = thisscore["fourScore"]
+    five = thisscore["fiveScore"]
+
+    scorelist=(one,two,three,four,five)
+    score = thisscore["oneScore"]+thisscore["twoScore"]+thisscore["threeScore"]+thisscore["fourScore"]+thisscore["fiveScore"]
+
+    question_list = {"1":question1,
+                    "2":question2,
+                    "3":question3,
+                    "4":question4,
+                    "5":question5}
+
+    return render(request, 'MC/otherscore.html', {'otherdate':otherdate, 'thisscore':thisscore, 'question_list':question_list, 'score':score,'scorelist':scorelist})

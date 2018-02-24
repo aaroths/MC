@@ -1,0 +1,53 @@
+{% extends 'generic.html' %}
+{% block content %}
+
+<h2> Your Checkup on {{otherdate}} </h2>
+
+
+<div class = "row">
+<div class = "col-sm-8">
+
+<div class = "textbox">
+<p>Your score was {{score}}/5</p>
+</div>
+<br>
+
+<div class ="statement_1">
+<p><b>{{question_list.1}}</b></p>
+{% if scorelist.0 == 0 %}<p>No</p>
+{% else %} <p>Yes</p>
+{% endif %}
+</div>
+
+<div class ="statement_grey">
+<p><b>{{question_list.2}}</b></p>
+{% if scorelist.1 == 0 %}<p>No</p>
+{% else %} <p>Yes</p>
+{% endif %}
+</div>
+
+<div class ="statement_3">
+<p><b>{{question_list.3}}</b></p>
+{% if scorelist.2 == 0 %}<p>No</p>
+{% else %} <p>Yes</p>
+{% endif %}
+</div>
+
+<div class ="statement_grey">
+<p><b>{{question_list.4}}</b></p>
+{% if scorelist.3 == 0 %}<p>No</p>
+{% else %} <p>Yes</p>
+{% endif %}
+</div>
+
+<div class ="statement_5">
+<p><b>{{question_list.5}}</b></p>
+{% if scorelist.4 == 0 %}<p>No</p>
+{% else %} <p>Yes</p>
+{% endif %}
+</div>
+</div>
+</div>
+
+
+{% endblock %}

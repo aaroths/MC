@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^statement_help/(?P<state>\d)/(?P<edits>\d+)/$',views.statement_help,name='statement_help'),
     url(r'^score$', views.score, name='score'),
     url(r'^scoresheet/(?P<pk>\d+)/$', views.scoresheet, name='scoresheet'),
+    url(r'^otherscore/(?P<number>\d+)/$', views.otherscore, name='otherscore'),
 ]

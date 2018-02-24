@@ -14,7 +14,6 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
         help_texts = {'username': 'Required'}
 
-
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
         self.fields['password1'].help_text = 'Must contain at least 8 characters'
@@ -37,10 +36,3 @@ class ScoreForm(forms.ModelForm):
     class Meta:
         model = Score
         fields = ('oneScore','twoScore','threeScore','fourScore','fiveScore','bigScore')
-        widgets = {
-        'oneScore': forms.RadioSelect,
-        'twoScore': forms.RadioSelect(),
-        'threeScore': forms.RadioSelect(),
-        'fourScore': forms.RadioSelect(),
-        'fiveScore': forms.RadioSelect(),
-    }
