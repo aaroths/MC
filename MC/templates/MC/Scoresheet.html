@@ -9,17 +9,24 @@
 <h3>STATS</h3>
 {% endif %}
 
-<div class = "textbox2">
-<p>You have performed <b>{{scores}}</b> Check-Ins with yourself</p>
-</div>
 
-{%if pk == "0"%}
-{% else %}
+{%if pk != "0"%}
 
 <div class = "textbox">
 <p> You are doing <strong>{{scorenow}}/5</strong> of your statements regularly</p>
-<br>
+</div>
 
+<div class = "button2">
+<button>What's it mean?</button>
+</div>
+<script>
+$("button").click(function() {
+  $( "#clickme" ).toggle("fast");
+});
+</script>
+
+<div id = "clickme" style="display:none">
+<div class = "textbox2">
 {%if scorenow > 3%}
   {%if bigscorenow > 2%}
   <p><b>You are definitely living true to Your Checkup.</b></p>
@@ -67,18 +74,24 @@
   {%endif%}
 {%endif%}
 </div>
+</div>
+
 
 {% endif %}
 
+<div class = "textbox4">
+<p>You have performed <b>{{scores}}</b> Check-Ins with yourself</p>
+</div>
 
 {%if pk == "0" %}
-  <div class = "textbox2">
+  <div class = "textbox4">
+  <p><b> Past Scores </b></p>
   <p>  <b>{{scorenow}}/5</b> on {{date1}}</p>
   <p>  <b>{{score2}}/5</b> on {{date2}} </p>
   <p>  <b>{{score3}}/5</b> on {{date3}}</p>
   </div>
 {% else %}
-  <div class = "textbox2">
+  <div class = "textbox4">
   <p> Your last two scores were:</p>
   <p>  <b>{{score2}}/5</b> on {{date2}} </p>
   <p>  <b>{{score3}}/5</b> on {{date3}}</p>
@@ -90,29 +103,29 @@
 
 <div class = "row">
 <div class = "col-sm-8">
-<div class ="statement_color">
+<div class ="statement_1">
 <p><b>{{questions.1}}</b></p>
-<p> You said Yes to this {{z1}}% of the time </p>
+<p> You do this {{z1}}% of the time </p>
 </div>
 
 <div class ="statement_grey">
 <p><b>{{questions.2}}</b></p>
-<p> You said Yes to this {{z2}}% of the time </p>
+<p> You do this {{z2}}% of the time </p>
 </div>
 
-<div class ="statement_color">
+<div class ="statement_3">
 <p><b>{{questions.3}}</b></p>
-<p> You said Yes to this {{z3}}% of the time </p>
+<p> You do this {{z3}}% of the time </p>
 </div>
 
 <div class ="statement_grey">
 <p><b>{{questions.4}}</b></p>
-<p> You said Yes to this {{z4}}% of the time </p>
+<p> You do this {{z4}}% of the time </p>
 </div>
 
-<div class ="statement_color">
+<div class ="statement_5">
 <p><b>{{questions.5}}</b></p>
-<p> You said Yes to this {{z5}}% of the time </p>
+<p> You do this this {{z5}}% of the time </p>
 </div>
 </div>
 </div>

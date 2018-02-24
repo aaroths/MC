@@ -5,13 +5,24 @@
 
 <h2>Check-In With Yourself</h2>
 
-<h4> Since your last Checkup, were you generally doing the following?</h4>
-<br>
-
   <form method="POST" class="post-form">
     {% csrf_token %}
 
     <div class = "form">
+            <p><label for="id_bigScore"><b>How have you been feeling?</label></p>
+            <p><select name="bigScore">
+                  <option value="4">Really Good</option>
+                  <option value="3">Good</option>
+                  <option value="3">OK</option>
+                  <option value="3">Poorly</option>
+                  <option value="3">Really Poorly</option>
+              </select> </p>
+              <br>
+              <br>
+              <h4> Since your last Checkup, were you generally doing the following?</h4>
+              <br>
+
+
               <p><label for="id_oneScore">{{questions.1}}</label><p>
               <p><fieldset id="id_oneScore">
                       <input type="radio" name="oneScore" option value="1">Yes</option>
@@ -37,15 +48,8 @@
                       <input type="radio" name="fiveScore" option value="1">Yes</option>
                       <input type="radio" name="fiveScore" option value="0">No</option>
                     </fieldset> </p>
-                <p><label for="id_bigScore"><b>How have you been feeling?</label></p>
-                <p><select name="bigScore">
-                      <option value="4">Really Good</option>
-                      <option value="3">Good</option>
-                      <option value="3">OK</option>
-                      <option value="3">Poorly</option>
-                      <option value="3">Really Poorly</option>
-                  </select> </p>
 
+    <br>  
     <button type="submit" class="save btn btn-default">Check In</button>
     </div>
   </form>

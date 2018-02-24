@@ -3,37 +3,54 @@
 
   {% block content %}
 
-  {% if user.is_authenticated %}
-  <H2>Welcome {{ user.get_username|title }} ! </H2>
-  {% endif %}
 
+
+
+
+  {% if user.is_authenticated %}
+  <h1>Welcome {{ user.get_username|title }} ! </h1>
+  {% else %}
   <div class = "textbox">
   <p>  <b>My Checkup</b> is a new way for you to support yourself. We all have normal ups and downs, but sometimes we get stuck in a bad spot. <b>MyCheckup</b> gives you a way out and an early warning sign before you get too stuck.</p1>
   </div>
+  {% endif %}
 
   {% if user.is_authenticated %}
   {%else%}
+    <div class = "button2">
+    <button>Tell me more</button>
+    </div>
+    <script>
+    $("button").click(function() {
+      $( "#clickme" ).toggle();
+    });
+    </script>
+
+  <div id = "clickme" style="display:none">
     <h2> <strong>Your own My Checkup</strong></h2>
     <div class = "textbox2">
-    <p>You will work on creating a list of <b>5 statements</b>. When you feel well and equilibrated, there are certain <b>interests, thoughts or feelings</b> you tend to have. These will not describe every changing moment, but more a general feeling over a longer time-frame. When you are in a "well" state of mind, these statements usually apply to you.
+    <p>You will work on creating a list of <b>5 statements</b>. When you feel well and equilibrated, there are certain <b>activities, thoughts or feelings</b> you tend to have. These will not describe every changing moment, but more a general feeling over a longer time-frame. When you are in a "well" state of mind, these statements usually apply to you.
     <br>
     <br>
     <p>This list will be revised with time. Not only will it warn you when things are getting tough, but it will also bring awareness to the things that keep you balanced. </p>
     </p1>
     </div>
+  </div>
   {%endif%}
     {% if user.is_authenticated %}
     <br>
     <!--shows CheckUp Only if all questions compelted-->
     {%if mod == 0 %}
       <br>
-      <h3><center><a class = "button" href="{% url 'score' %}">Time to Check-In</center></a></h3>
+      <h3><center><a class = "button" href="{% url 'score' %}">Check-In</center></a></h3>
       <br>
       <br>
     {% endif %}
 
-    <h1> {{user.get_username|title}}'s My Checkup </h1>
-    <br>
+    <div class = "textbox4">
+    <h2> {{user.get_username|title}}'s My Checkup </h2>
+    <h4> Click a statement to edit</h4>
+    </div>
     {% for key, val in questions %}
     {%if val == None%}
       <div class = "statement_{{key}}">
@@ -57,7 +74,7 @@
       </div>
       {% endfor %}
 
-      <h2> Please <a href="{% url 'login'%}">Login</a> or <a href="{% url 'signup' %}">Sign Up </a></h2>
+      <h2> To Checkup please <a href="{% url 'login'%}">Login</a> or <a href="{% url 'signup' %}">Sign Up </a></h2>
 
     {% endif %}
 
