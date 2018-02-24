@@ -84,21 +84,24 @@ $("button").click(function() {
 {%if pk == "0" %}
   <div class = "textbox4">
   {% if date1 != "Not yet completed" %}
-  <p><b> Past Scores </b></p>
-  <p>  <b>{{scorenow}}/5</b> on {{date1}}</p>
-  {% elif date2 != "Not yet completed" %}
-  <a href ={% url 'otherscore' number=1 %}><p>  <b>{{score2}}/5</b> on {{date2}} </p></a>
-  {% elif date3 != "Not yet completed" %}
-  <a href ={% url 'otherscore' number=2 %}><p><b>{{score3}}/5</b> on {{date3}}</a></p>
+    <p><b> Past Scores </b></p>
+    <p>  <b>{{scorenow}}/5</b> on {{date1}}</p>
+    {% if date2 != "Not yet completed" %}
+    <a href ={% url 'otherscore' number=1 %}><p>  <b>{{score2}}/5</b> on {{date2}} </p></a>
+      {% if date3 != "Not yet completed" %}
+      <a href ={% url 'otherscore' number=2 %}><p><b>{{score3}}/5</b> on {{date3}}</a></p>
+      {% endif %}
+    {% endif %}
   {% endif %}
   </div>
 {% else %}
   <div class = "textbox4">
   {% if date2 != "Not yet completed" %}
-  <p> Your last two scores were:</p>
-  <a href ={% url 'otherscore' number=1 %}><p>  <b>{{score2}}/5</b> on {{date2}} </a></p>
-  {% elif date3 != "Not yet completed" %}
-  <a href ={% url 'otherscore' number=2 %}><p><b>{{score3}}/5</b> on {{date3}}</a></p>
+    <p> Your last scores were:</p>
+    <a href ={% url 'otherscore' number=1 %}><p>  <b>{{score2}}/5</b> on {{date2}} </a></p>
+    {% if date3 != "Not yet completed" %}
+    <a href ={% url 'otherscore' number=2 %}><p><b>{{score3}}/5</b> on {{date3}}</a></p>
+    {% endif %}
   {% endif %}
   </div>
 {% endif %}
