@@ -35,4 +35,4 @@ class StatementForm(forms.ModelForm):
 class ScoreForm(forms.ModelForm):
     class Meta:
         model = Score
-        fields = ('oneScore','twoScore','threeScore','fourScore','fiveScore','bigScore')
+        fields = ('bigScore','oneScore','twoScore','threeScore','fourScore','fiveScore',)

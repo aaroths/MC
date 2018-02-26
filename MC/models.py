@@ -61,9 +61,9 @@ class Score(models.Model):
 
     yesno = ((1,"Yes"),(0,"No"),)
     bigfive = ((0,"Really Bad"),
-               (1,"Poorly"),
+               (1,"Bad"),
                (2,"Ok"),
-               (3,"Pretty Good"),
+               (3,"Good"),
                (4,"Really Good"),)
 
     statementNumber=models.IntegerField(default='1',verbose_name="The number of the statement")

@@ -1,5 +1,7 @@
 {% extends 'generic.html' %}
+{% load static %}
 {% block content %}
+
 
 <div class = "textbox2">
   <h3>{{question}}</h3>
@@ -7,19 +9,50 @@
 
 <div class = "row">
   <div class="col-sm-6">
-  <div class="statement_color">
+  <div class="statement_1">
     <p> When you said <b>yes</b></p>
-    <p>Average wellness was: {{total_no}}/5</p>
   </div>
-  </div>
-
-  <div class="col-sm-6">
-  <div class = "statement_grey">
-    <p> When you said <b>no</b></p>
-    <p>Average wellness was: {{total_yes}}/5</p>
-  </div>
+  <div class="statement_2">
+    <p>Average wellness was: {{total_yes}}/5
+    {% if total_yes >= 4.5 %}
+      <div class = "image1"><img src="{% static 'happy5.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+    {% elif total_yes >= 3.5 %}
+      <div class = "image1"><img src="{% static 'happy4.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+    {% elif total_yes >= 2.5 %}
+      <div class = "image1"><img src="{% static 'happy3.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+    {% elif total_yes > 1.5 %}
+      <div class = "image1"><img src="{% static 'happy2.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+    {% else %}
+      <div class = "image1"><img src="{% static 'happy1.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+    {% endif %}
   </div>
 </div>
+
+<div class="col-sm-6">
+<div class="statement_1">
+  <p> When you said <b>no</b></p>
+</div>
+<div class="statement_2">
+  <p>Average wellness was: {{total_no}}/5
+  {% if total_no >= 4.5 %}
+    <div class = "image1"><img src="{% static 'happy5.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+  {% elif total_no >= 3.5 %}
+    <div class = "image1"><img src="{% static 'happy4.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+  {% elif total_no >= 2.5 %}
+    <div class = "image1"><img src="{% static 'happy3.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+  {% elif total_no > 1.5 %}
+    <div class = "image1"><img src="{% static 'happy2.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+  {% else %}
+    <div class = "image1"><img src="{% static 'happy1.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+  {% endif %}
+</div>
+</div>
+
+
+
+
+</div>
+
 
 <h2><a href={% url 'scoresheet' pk=0 %}>Back to Stats</a> </h2>
 

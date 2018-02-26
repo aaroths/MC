@@ -132,6 +132,7 @@ ul {
   /*background-color: #D876C0;*/
   border-style: solid;
   border-color: #FFC9C9;
+  border-width: 2px;
   background-color:#fff;
   padding: 10px;
   margin-top: 0px;
@@ -153,6 +154,7 @@ ul {
 .statement_4 {
   border-style: solid;
   border-color: #FFC9C9;
+  border-width: 2px;
   background-color:#fff;
   padding: 10px;
   margin-top: 0px;
@@ -175,6 +177,7 @@ ul {
 .statement_grey {
   border-style: solid;
   border-color: #FFC9C9;
+  border-width: 1px;
   background-color:#fff;
   border-radius: 10px;
   padding: 10px;

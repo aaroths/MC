@@ -198,6 +198,17 @@ def otherscore (request,number):
 
     scorelist=(one,two,three,four,five)
     score = thisscore["oneScore"]+thisscore["twoScore"]+thisscore["threeScore"]+thisscore["fourScore"]+thisscore["fiveScore"]
+    bigone= thisscore["bigScore"]
+    if bigone==4:
+        wellness="Really Good"
+    elif bigone==3:
+        wellness="Good"
+    elif bigone==3:
+        wellness="OK"
+    elif bigone==3:
+        wellness="Bad"
+    else:
+        wellness="Really Bad"
 
     question_list = {"1":question1,
                     "2":question2,
@@ -205,7 +216,7 @@ def otherscore (request,number):
                     "4":question4,
                     "5":question5}
 
-    return render(request, 'MC/otherscore.html', {'otherdate':otherdate, 'thisscore':thisscore, 'question_list':question_list, 'score':score,'scorelist':scorelist})
+    return render(request, 'MC/otherscore.html', {'otherdate':otherdate, 'thisscore':thisscore, 'question_list':question_list, 'score':score,'scorelist':scorelist,'wellness':wellness})
 
 from django.db.models import Avg
 def statement_wellness (request,statement,pk):
@@ -228,7 +239,13 @@ def statement_wellness (request,statement,pk):
         score_no=Score.objects.filter(fivepk=pk,fiveScore=0).aggregate(Avg('bigScore'))
         score_yes=Score.objects.filter(fivepk=pk,fiveScore=1).aggregate(Avg('bigScore'))
 
-    total_no=round(((score_yes["bigScore__avg"])+1),1)
-    total_yes=round(((score_no["bigScore__avg"])+1),1)
+    if score_no["bigScore__avg"] != None:
+        total_no=round(((score_no["bigScore__avg"])+1),1)
+    else:
+        total_no=3
+    if score_yes["bigScore__avg"] != None:
+        total_yes=round(((score_yes["bigScore__avg"])+1),1)
+    else:
+        total_yes=3
 
-    return render(request,'MC/statement_wellness.html',{'question':question,'statement':statement,'total_no':total_no,'total_yes':total_yes})
+    return render(request,'MC/statement_wellness.html',{'question':question,'statement':statement,'total_no':total_no,'total_yes':total_yes,'score_no':score_no})
