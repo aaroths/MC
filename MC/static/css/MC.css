@@ -65,6 +65,10 @@ a:hover {
   transition: 0.3s;
 }
 
+a.nounderline:link {
+  text-decoration: none;
+}
+
 a.mc:link {
     color:#000 !important;
     text-decoration: none;
@@ -126,6 +130,8 @@ ul {
 
 .statement_2 {
   /*background-color: #D876C0;*/
+  border-style: solid;
+  border-color: #FFC9C9;
   background-color:#fff;
   padding: 10px;
   margin-top: 0px;
@@ -145,7 +151,8 @@ ul {
 }
 
 .statement_4 {
-  /*background-color: #AF76D8;*/
+  border-style: solid;
+  border-color: #FFC9C9;
   background-color:#fff;
   padding: 10px;
   margin-top: 0px;
@@ -166,6 +173,8 @@ ul {
 }
 
 .statement_grey {
+  border-style: solid;
+  border-color: #FFC9C9;
   background-color:#fff;
   border-radius: 10px;
   padding: 10px;

@@ -112,27 +112,27 @@ $("button").click(function() {
 <div class = "row">
 <div class = "col-sm-8">
 <div class ="statement_1">
-<p><b>{{questions.1}}</b></p>
+<p><b><a class = "nounderline" href={% url 'statement_wellness' statement=1 pk=questions.1.pk %}>{{questions.1}}</a></b></p>
 <p> You do this {{z1}}% of the time </p>
 </div>
 
-<div class ="statement_grey">
-<p><b>{{questions.2}}</b></p>
+<div class ="statement_2">
+<p><b><a class = "nounderline" href={% url 'statement_wellness' statement=2 pk=questions.2.pk %}>{{questions.2}}</a></b></p>
 <p> You do this {{z2}}% of the time </p>
 </div>
 
 <div class ="statement_3">
-<p><b>{{questions.3}}</b></p>
+<p><b><a class = "nounderline" href={% url 'statement_wellness' statement=3 pk=questions.3.pk %}>{{questions.3}}</a></b></p>
 <p> You do this {{z3}}% of the time </p>
 </div>
 
-<div class ="statement_grey">
-<p><b>{{questions.4}}</b></p>
+<div class ="statement_4">
+<p><b><a class = "nounderline" href={% url 'statement_wellness' statement=4 pk=questions.4.pk %}>{{questions.4}}</a></b></p>
 <p> You do this {{z4}}% of the time </p>
 </div>
 
 <div class ="statement_5">
-<p><b>{{questions.5}}</b></p>
+<p><b><a class = "nounderline" href={% url 'statement_wellness' statement=5 pk=questions.5.pk %}>{{questions.5}}</a></b></p>
 <p> You do this {{z5}}% of the time </p>
 </div>
 </div>

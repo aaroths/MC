@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^score$', views.score, name='score'),
     url(r'^scoresheet/(?P<pk>\d+)/$', views.scoresheet, name='scoresheet'),
     url(r'^otherscore/(?P<number>\d+)/$', views.otherscore, name='otherscore'),
+    url(r'^statement_wellness/(?P<statement>\d)/(?P<pk>\d+)/$', views.statement_wellness, name='statement_wellness'),
 ]

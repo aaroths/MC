@@ -3,16 +3,21 @@
 
 {% block content %}
 <div class = "textbox">
-<p><b>My Checkup</b> is new way for you to support yourself. We all have normal ups and downs, but sometimes we get stuck in a bad spot. <b>My Checkup</b> gives you a way out and an early warning sign before you get too stuck.</p>
+<p><b>My Checkup</b> is new way for you to support yourself. We all have normal ups and downs, but sometimes we get stuck in a bad spot. <b>My Checkup</b> gives you a way out before you get too stuck.</p>
 </div>
 
 <div class = "image1"><img src="{% static 'Stuck.png' %}" alt="My image" style="width:350px;height:200px"/></div>
 
 <div class = "textbox2">
-<p><b>My Checkup</b> is about finding things you <b>Do or Think or Feel</b> when you are Well. Of course we aren't going to feel well all the time, but for each of us, there are certain things that keep us on the right track.</p>
+<p><b>My Checkup</b> is about finding things you <b>Do or Think or Feel</b> when you are well. Of course we aren't going to feel well all the time, but for each of us, there are certain things that keep us on the right track.</p>
 </div>
 
 <div class = "image1"><img src="{% static 'cycle.png' %}" alt="My image" style="width:300px;height:225px"/></div>
+
+<div class = "textbox2">
+<p><a class = "button" href="{% url 'home' %}">Check-In</a></b> allows you to see how you are doing.</p>
+<p>It can also keep track of stats and correlate your statements with how well you feel. We recommend you check-in <b>weekly</b> but you can check in as frequently or rarely as you want.</p>
+</div>
 
 
 <div class = "textbox2">

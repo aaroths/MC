@@ -206,3 +206,29 @@ def otherscore (request,number):
                     "5":question5}
 
     return render(request, 'MC/otherscore.html', {'otherdate':otherdate, 'thisscore':thisscore, 'question_list':question_list, 'score':score,'scorelist':scorelist})
+
+from django.db.models import Avg
+def statement_wellness (request,statement,pk):
+    user = request.user
+    question = Question.objects.filter(author=user,pk=pk).last()
+
+    if int(statement) == 1:
+        score_no=Score.objects.filter(onepk=pk,oneScore=0).aggregate(Avg('bigScore'))
+        score_yes=Score.objects.filter(onepk=pk,oneScore=1).aggregate(Avg('bigScore'))
+    elif int(statement) == 2:
+        score_no=Score.objects.filter(twopk=pk,twoScore=0).aggregate(Avg('bigScore'))
+        score_yes=Score.objects.filter(twopk=pk,twoScore=1).aggregate(Avg('bigScore'))
+    elif int(statement) == 3:
+        score_no=Score.objects.filter(threepk=pk,threeScore=0).aggregate(Avg('bigScore'))
+        score_yes=Score.objects.filter(threepk=pk,threeScore=1).aggregate(Avg('bigScore'))
+    elif int(statement) == 4:
+        score_no=Score.objects.filter(fourpk=pk,fourScore=0).aggregate(Avg('bigScore'))
+        score_yes=Score.objects.filter(fourpk=pk,fourScore=1).aggregate(Avg('bigScore'))
+    else:
+        score_no=Score.objects.filter(fivepk=pk,fiveScore=0).aggregate(Avg('bigScore'))
+        score_yes=Score.objects.filter(fivepk=pk,fiveScore=1).aggregate(Avg('bigScore'))
+
+    total_no=round(((score_yes["bigScore__avg"])+1),1)
+    total_yes=round(((score_no["bigScore__avg"])+1),1)
+
+    return render(request,'MC/statement_wellness.html',{'question':question,'statement':statement,'total_no':total_no,'total_yes':total_yes})

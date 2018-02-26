@@ -6,7 +6,7 @@
   {% if edit == "0" %}
     <h1>New Check-Up Statement</h1>
     <div class = "textbox2">
-      <p>Input a statement. You can edit it later. Statements involve things you <b>do, think, or feel</b> when you are well.</p>
+      <p>Statements involve things you <b>do, think, or feel</b> when you are well. These can be edited at any time.</p>
       <p>If you are having trouble coming up with these - <a href={% url 'statement_help' state=statement edits=edit %}>this should help.</a></p>
     </div>
     <br>
@@ -41,7 +41,7 @@
     </div>
 
   {% endfor %}
-  
+
   <div class="textbox2">
     <h2>A statement should:</h2>
     <ul>
