@@ -34,9 +34,9 @@
           <!--{% url 'logout'%}?next={{request.path}}-->
         </ul>
       </div>
-      <div class = "page-header">
+      <a class ="nounderline" href="{% url 'home' %}"><div class = "page-header">
         <h1><img src="{% static 'MC2.png' %}" alt="My image" style="width:106px;height:90px;"/>My Checkup </h1>
-      </div>
+      </div></a>
       {% block content %}{% endblock %}
       </div>
     </div>

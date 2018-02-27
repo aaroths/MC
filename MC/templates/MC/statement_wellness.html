@@ -3,6 +3,8 @@
 {% block content %}
 
 
+<h2><a href={% url 'scoresheet' pk=0 %}>Back to Stats</a> </h2>
+
 <div class = "textbox2">
   <h3>{{question}}</h3>
 </div>
@@ -13,7 +15,12 @@
     <p> When you said <b>yes</b></p>
   </div>
   <div class="statement_2">
-    <p>Average wellness was: {{total_yes}}/5
+    {% if total_yes != "NO INPUTS!" %}
+    <p>Average wellness was: {{total_yes}}/5<p>
+    {% else %}
+    <p>No data yet!</p>
+    {% endif %}
+
     {% if total_yes >= 4.5 %}
       <div class = "image1"><img src="{% static 'happy5.png' %}" alt="My image" style="width:50px;height:50px"/></div>
     {% elif total_yes >= 3.5 %}
@@ -33,7 +40,11 @@
   <p> When you said <b>no</b></p>
 </div>
 <div class="statement_2">
-  <p>Average wellness was: {{total_no}}/5
+  {% if total_no != "NO INPUTS!" %}
+  <p>Average wellness was: {{total_no}}/5<p>
+  {% else %}
+  <p>No data yet!</p>
+  {% endif %}
   {% if total_no >= 4.5 %}
     <div class = "image1"><img src="{% static 'happy5.png' %}" alt="My image" style="width:50px;height:50px"/></div>
   {% elif total_no >= 3.5 %}
@@ -53,7 +64,5 @@
 
 </div>
 
-
-<h2><a href={% url 'scoresheet' pk=0 %}>Back to Stats</a> </h2>
 
 {% endblock %}

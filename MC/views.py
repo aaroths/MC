@@ -242,10 +242,10 @@ def statement_wellness (request,statement,pk):
     if score_no["bigScore__avg"] != None:
         total_no=round(((score_no["bigScore__avg"])+1),1)
     else:
-        total_no=3
+        total_no="NO INPUTS!"
     if score_yes["bigScore__avg"] != None:
         total_yes=round(((score_yes["bigScore__avg"])+1),1)
     else:
-        total_yes=3
+        total_yes="NO INPUTS!"
 
     return render(request,'MC/statement_wellness.html',{'question':question,'statement':statement,'total_no':total_no,'total_yes':total_yes,'score_no':score_no})

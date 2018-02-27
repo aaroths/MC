@@ -21,12 +21,55 @@
     {% endfor %}
     </div>
   {% endif %}
+
+
+        <div id = "clickme">
         <form method="POST" class="post-form">{% csrf_token %}
           <table border="1">
           {{ form | crispy }}
           </table>
           <button type="submit" class="save btn btn-default">Save</button>
         </form>
+        <div class = "button2">
+        <button>Pick from Sample Statements</button>
+        </div>
+        </div>
+
+        <div id = "clickme1" style="display:none">
+        <form method="POST" class="post-form">{% csrf_token %}
+          <h4list><select name="text">
+                <option value="Exercising most days of the week.">Exercising most days of the week.</option>
+                <option value="Enjoying my hobbies in my free time.">Enjoying my hobbies in my free time.</option>
+                <option value="Eating healthy and enjoying the food I eat.">Eating healthy and enjoying the food I eat.</option>
+                <option value="Getting at least 7 hours of sleep a night.">Getting at least 7 hours of sleep a night.</option>
+                <option value="Having enough time off to de-stress.">Having enough time off to de-stress.</option>
+                <option value="Talking to family and friends regularly.">Talking to family and friends regularly.</option>
+                <option value="Feeling curious and excited about the world around me.">Enjoying my hobbies in my free time.</option>
+                <option value="Having self-compassion and avoiding self-blame.">Eating healthy and enjoying the food I eat.</option>
+                <option value="Cutting down on Alcohol.">Cutting down on Alcohol.</option>
+                <option value="Trying to live in the moment.">Trying to live in the moment.</option>
+
+            </select></h4list>
+            <br>
+            <phelp>Select a statement</phelp>
+            <br>
+            <br>
+
+          <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+          <div class = "button2">
+          <button>Write My Own</button>
+          </div>
+
+        </div>
+
+
+        <script>
+        $("button").click(function() {
+          $( "#clickme" ).toggle();
+          $( "#clickme1" ).toggle();
+        });
+        </script>
 
   {% if edit == "1" %}
   <div class = "textbox2">
