@@ -199,13 +199,14 @@ def otherscore (request,number):
     scorelist=(one,two,three,four,five)
     score = thisscore["oneScore"]+thisscore["twoScore"]+thisscore["threeScore"]+thisscore["fourScore"]+thisscore["fiveScore"]
     bigone= thisscore["bigScore"]
+
     if bigone==4:
         wellness="Really Good"
     elif bigone==3:
         wellness="Good"
-    elif bigone==3:
+    elif bigone==2:
         wellness="OK"
-    elif bigone==3:
+    elif bigone==1:
         wellness="Bad"
     else:
         wellness="Really Bad"
@@ -217,6 +218,21 @@ def otherscore (request,number):
                     "5":question5}
 
     return render(request, 'MC/otherscore.html', {'otherdate':otherdate, 'thisscore':thisscore, 'question_list':question_list, 'score':score,'scorelist':scorelist,'wellness':wellness})
+
+
+def scorelist (request):
+    user = request.user
+    scores = Score.user_objects.get_userset(user).count()
+    data = Score.data_objects.list(user)
+    thislist=[]
+    x=0;
+
+    for one in data:
+        date=one["date_created"].strftime('%A %d/%m/%Y')
+        thislist.append(date)
+        x=x+1
+
+    return render (request, 'MC/scorelist.html', {'scores':scores,'data':data,'thislist':thislist})
 
 from django.db.models import Avg
 def statement_wellness (request,statement,pk):

@@ -11,7 +11,7 @@
     <p>Your account doesn't have access to this page. To proceed,
     please login with an account that has access.</p>
     {% else %}
-    <p>Please login to enter My Checkup.</p>
+    <p>Please login or <a class = "underline" href="{% url 'signup' %}">Sign Up</a> to enter My Checkup.</p>
     {% endif %}
 {% endif %}
 

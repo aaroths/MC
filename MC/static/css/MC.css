@@ -1,12 +1,6 @@
-.page-header {
-    /*background-color: #D876C0; /*B673C1;*/
-    text-align: center;
-    vertical-align:middle;
-    margin-top: 20px;
-    padding: 20px 20px 20px 40px;
-}
 
 h1{
+
 }
 
 h2{
@@ -23,6 +17,17 @@ h4list{
 p {
   color: #000;
   padding: 100 px;
+}
+
+li {
+  list-style-position:inside;
+}
+
+ul.check {
+  margin-left: 0px;
+  padding-left: 0px;
+  ul
+  list-style-type: square;
 }
 
 phelp {
@@ -51,6 +56,13 @@ button:hover {
   background-color: #EEEEEE;
   color: #000;
   opacity:0.6;
+}
+
+.page-header {
+    text-align: center;
+    vertical-align:middle;
+    margin-top: 20px;
+    padding: 20px 20px 20px 20px;
 }
 
 .button2 {
@@ -261,12 +273,31 @@ form.post-form {
 
 @media screen and (min-width: 799px) {
 
+  .sticky {
+    position: fixed;
+    top: 0;
+    left: 2;
+    width: 89%
+  }
+
+  .navs {
+    background-color: #fff;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 5px;
+    font-size: 1.35eM;
+    z-index: 1;
+  }
+
+  .narrow {
+    margin-left:15%;
+    margin-right:15%;
+  }
 
 li.nav {
   display:inline;
   float:left;
   padding: 8px;
-  font-size: 1.1eM;
   /*background-color: #F4B1FF;*/
 }
 
@@ -279,8 +310,7 @@ li.nav {
 li.nav2 {
   display:inline;
   float:right;
-  padding: 8px;
-  font-size: 1.1eM;
+  padding: 8px 8px 8px 8px;
   /*background-color: #F4B1FF;*/
 }
 
@@ -294,7 +324,6 @@ li.nav2 {
 
   .nav ul {
     margin: 0px; padding: 0px;
-
   }
 
   .nav li {
@@ -336,47 +365,3 @@ li.nav2 {
     opacity: 0.6;
   }
 }
-
-/*@media only screen
-    and (device-width : 414px)
-    and (device-height : 736px)
-    and (-webkit-device-pixel-ratio : 3) {
-
-      li.nav {
-        display: block !important;
-        background-color: #fff;
-        font-size: 1.3eM;
-        text-align: center;
-        text-decoration:none !important;
-        background-color:#FFC9C9;
-        padding: 12px 15px;
-        border-radius: 10px;
-        box-shadow: 0 6px 10px 0 rgba(0,0,0,0.4), 0 4px 12px 0 rgba(0,0,0,0);
-      }
-
-      .nav a{
-        text-decoration: none;
-      }
-
-      li.nav:hover{
-        opacity: 0.6;
-      }
-
-      li.nav2 {
-        display: block !important;
-        background-color: #fff;
-        font-size: 1.3eM;
-        text-align: center;
-        text-decoration:none !important;
-        background-color:#FFC9C9;
-        padding: 12px 15px;
-        border-radius: 10px;
-        box-shadow: 0 6px 10px 0 rgba(0,0,0,0.4), 0 4px 12px 0 rgba(0,0,0,0);
-      }
-
-      li.nav2:hover{
-        opacity: 0.6;
-      }
-    }
-
-    }*/

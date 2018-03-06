@@ -1,0 +1,15 @@
+{% extends 'generic.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class = "textbox4">
+<p>You have performed <b>{{scores}}</b> Check-Ins with yourself</p>
+</div>
+
+{% for x in thislist %}
+  <a href = "/MC/otherscore/{{forloop.counter0}}/"> <p>{{forloop.counter}}) {{x}}</p></a>
+{% endfor %}
+
+
+{%endblock%}

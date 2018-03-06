@@ -8,21 +8,21 @@
 <div class = "col-sm-8">
 
 <div class = "textbox">
-<p>Your score was {{score}}/5</p>
+<p>Your score was: <strong>{{score}}/5</p></strong>
 </div>
 
 <div class="textbox2">
   <p style = text-align:center> You were feeling {{wellness}} </p>
   {% if wellness == "Really Good" %}
-    <div class = "image1"><img src="{% static 'happy5.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+    <div class = "image1"><img src="{% static 'happy5.png' %}" alt="My image" style="width:100px;height:100px"/></div>
   {% elif wellness == "Good" %}
-    <div class = "image1"><img src="{% static 'happy4.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+    <div class = "image1"><img src="{% static 'happy4.png' %}" alt="My image" style="width:100px;height:100px"/></div>
   {% elif wellness == "OK" %}
-    <div class = "image1"><img src="{% static 'happy3.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+    <div class = "image1"><img src="{% static 'happy3.png' %}" alt="My image" style="width:100px;height:100px"/></div>
   {% elif wellness == "Bad" %}
-    <div class = "image1"><img src="{% static 'happy2.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+    <div class = "image1"><img src="{% static 'happy2.png' %}" alt="My image" style="width:100px;height:100px"/></div>
   {% else %}
-    <div class = "image1"><img src="{% static 'happy1.png' %}" alt="My image" style="width:50px;height:50px"/></div>
+    <div class = "image1"><img src="{% static 'happy1.png' %}" alt="My image" style="width:100px;height:100px"/></div>
   {% endif %}
 </div>
 
@@ -34,7 +34,7 @@
 {% endif %}
 </div>
 
-<div class ="statement_grey">
+<div class ="statement_2">
 <p><b>{{question_list.2}}</b></p>
 {% if scorelist.1 == 0 %}<p>No</p>
 {% else %} <p>Yes</p>
@@ -48,7 +48,7 @@
 {% endif %}
 </div>
 
-<div class ="statement_grey">
+<div class ="statement_4">
 <p><b>{{question_list.4}}</b></p>
 {% if scorelist.3 == 0 %}<p>No</p>
 {% else %} <p>Yes</p>
@@ -64,5 +64,8 @@
 </div>
 </div>
 
+<br>
+<br>
+<br>
 
 {% endblock %}
