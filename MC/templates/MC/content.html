@@ -5,38 +5,10 @@
 
   {% if user.is_authenticated %}
   <h1>Welcome {{ user.get_username|title }} ! </h1>
-  {% else %}
-  <div class = "textbox">
-  <p>  <b>My Checkup</b> is a new way for you to support yourself. We all have normal ups and downs, but sometimes we get stuck in a bad spot. <b>My Checkup</b> gives you a way out and an early warning sign before you get too stuck.</p1>
-  </div>
-  {% endif %}
 
-  {% if user.is_authenticated %}
-  {%else%}
-    <div class = "button2">
-    <button>Tell me more</button>
-    </div>
-    <script>
-    $("button").click(function() {
-      $( "#clickme" ).toggle();
-    });
-    </script>
-
-  <div id = "clickme" style="display:none">
-    <h2> <strong>Your own Checkup</strong></h2>
-    <div class = "textbox2">
-    <p>You will work on creating a list of <b>5 statements</b>. When you feel well and equilibrated, there are certain <b>activities, thoughts or feelings</b> you tend to have. These will not describe every changing moment, but more a general feeling over a longer time-frame. When you are in a "well" state of mind, these statements usually apply to you.
-    <br>
-    <br>
-    <p>This list will be revised with time. Not only will it warn you when things are getting tough, but it will also bring awareness to the things that keep you balanced. </p>
-    </p1>
-    </div>
-  </div>
-  {%endif%}
-    <div class = "checkup">
-    {% if user.is_authenticated %}
-    <br>
-    <!--shows CheckUp Only if all questions compelted-->
+  <div class = "checkup">
+  <br>
+  <!--shows CheckUp Only if all questions compelted-->
     {%if mod == 0 %}
       <br>
       <h3><a class = "button" href="{% url 'score' %}">Checkup</a></h3>
@@ -44,43 +16,100 @@
       <br>
     {% endif %}
 
-    <div class = "textbox4">
-    <h2> {{user.get_username|title}}'s My Checkup </h2>
-    <h4> Click a statement to edit</h4>
+  <div class = "textbox4">
+  <h2> {{user.get_username|title}}'s My Checkup </h2>
+  <h4> Click a statement to edit</h4>
+  </div>
+
+  <ul class = "check">
+    {% for key, val in questions %}
+    {%if val == None%}
+      <div class = "statement_{{key}}">
+        <li><a class = "mc" href={% url 'statement_input' statement=key edit=0 %}> Create a new statement </a></li>
+      </div>
+    {%else%}
+      <div class = "statement_{{key}}">
+        <li class = "image"> <a class ="mc" href={% url 'statement_input' statement=key edit=1 %}>{{val}}</a></li>
+      </div>
+    {%endif%}
+    {% endfor %}
+  </ul>
+   <br>
+   <div class = "image1"><img src="{% static 'MC2.png' %}" alt="My image" style="width:106px;height:90px"/></div>
+
+  {%else%}
+
+
+    <div class = "intro2">
+    <p>  <b>Checkup</b> on yourself </p>
+    <img src="{% static 'MC.png' %}" alt="My image" style="width:106px;height:90px;"/>
     </div>
 
-    <ul class = "check">
-      {% for key, val in questions %}
-      {%if val == None%}
-        <div class = "statement_{{key}}">
-          <li><a class = "mc" href={% url 'statement_input' statement=key edit=0 %}> Create a new statement </a></li>
-        </div>
-      {%else%}
-        <div class = "statement_{{key}}">
-          <li> <a class ="mc" href={% url 'statement_input' statement=key edit=1 %}>{{val}}</a></li>
-        </div>
-      {%endif%}
-      {% endfor %}
-    </ul>
-     <br>
-     <div class = "image1"><img src="{% static 'MC2.png' %}" alt="My image" style="width:106px;height:90px"/></div>
+    <div class = "button2">
+    <button>Tell me more</button>
+    </div>
 
-    {% else %}
-      <ul class = "check">
-      <h2> Sample My Checkup </h2>
-      <h4> Since my last checkup, I am generally:</h4>
-        {% for key, val in sample %}
-          <div class = "statement_{{key}}">
-          <li>{{val}}</li>
-        </div>
-        {% endfor %}
-      </ul>
+    <script>
+    $("button").click(function() {
+      $( "#clickme" ).toggle();
+    });
+    </script>
 
+    <div id = "clickme" style="display:none">
+      <h2> <strong>Your own Checkup</strong></h2>
+      <div class = "textbox2">
+      <p>You will work on creating a list of <b>5 statements</b>. When you feel well and equilibrated, there are certain <b>activities, thoughts or feelings</b> you tend to have. These will not describe every changing moment, but more a general feeling over a longer time-frame. When you are in a "well" state of mind, these statements usually apply to you.
       <br>
-
-      <h4> To Checkup please <a href="{% url 'login'%}">Login</a> or <a href="{% url 'signup' %}">Sign Up </a></h4>
+      <br>
+      <p>This list will be revised with time. Not only will it warn you when things are getting tough, but it will also bring awareness to the things that keep you balanced. </p>
+      </p1>
+      </div>
     </div>
-    {% endif %}
+
+    </div>
+
+    <div class = "intro2">
+    </div>
+
+    <div class = "intro1">
+    <p>#1 Create Your Checkup</p>
+    </div>
+
+    <div class = "image1"><img src="{% static 'MC/phone1.png' %}" alt="My image" style="width:300px;height:575px;"/></div>
+
+    <div class = "intro1">
+    <p>#2 <a class = "button" href="{% url 'about' %}">Checkup</a> every week</p>
+    </div>
+
+    <div class = "image1"><img src="{% static 'MC/phone2.png' %}" alt="My image" style="width:300px;height:575px;"/></div>
+
+    <div class = "intro1">
+    <p>#3 Keep Track</p>
+    </div>
+
+    <div class = "image1"><img src="{% static 'MC/phone3.png' %}" alt="My image" style="width:300px;height:575px;"/>
+    <br><img src="{% static 'MC/cpu1.png' %}" alt="My image" style="width:800px;height:600px;"/>
+    </div>
+
+    <div class = "intro1">
+    <p>#4 Update Your Checkup</p>
+    <p1>Find your happiest self</p>
+    </div>
+
+    <div class = "image1"><img src="{% static 'MC/happy.png' %}" alt="My image" style="width:672px;height:100px;"/></div>
+
+    <div class = "image1"><img src="{% static 'cycle.png' %}" alt="My image" style="width:300px;height:225px;"/></div>
+
+
+    <div class = "intro1">
+    <p>#5 Keep Learning</p>
+    </div>
+
+    <div class = "intro2">
+    <a class = "button" href="{% url 'login'%}">Login</a> or <a class = "button" href="{% url 'signup' %}">Sign Up </a>
+    </div>
+
+  {%endif%}
 
 
 

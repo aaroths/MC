@@ -20,8 +20,26 @@ def home(request):
 def about(request):
     return render(request,'MC/about.html')
 
+def faq(request):
+    return render(request,'MC/FAQ.html')
+
 def resources(request):
     return render(request,'MC/resources.html')
+
+def test(request):
+    sampleUser = "1"
+    sample = Question.objects.current_for_user(sampleUser)
+    mod = 0
+    if request.user.is_authenticated:
+        user = request.user
+        questions = Question.objects.current_for_user(user)
+        if questions['1']== None or questions['2']== None or questions['3']== None or questions['4']== None or questions['5'] == None:
+            mod = 1
+    else:
+        user = request.user
+        questions = Question.objects.current_for_user(sampleUser)
+    return render(request,'MC/test.html',{'sample':sorted(sample.items()),'questions':sorted(questions.items()),'mod':mod})
+
 
 #allows user to SIGN UP
 from django.contrib.auth.forms import UserCreationForm

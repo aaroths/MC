@@ -1,0 +1,75 @@
+{% extends 'generic.html' %}
+{% load static %}
+
+  {% block content %}
+
+  <div class = "intro2">
+  <p>  <b>Checkup</b> on yourself </p>
+  <img src="{% static 'MC.png' %}" alt="My image" style="width:106px;height:90px;"/>
+  </div>
+
+  <div class = "button2">
+  <button>Tell me more</button>
+  </div>
+
+  <script>
+  $("button").click(function() {
+    $( "#clickme" ).toggle();
+  });
+  </script>
+
+  <div id = "clickme" style="display:none">
+    <h2> <strong>Your own Checkup</strong></h2>
+    <div class = "textbox2">
+    <p>You will work on creating a list of <b>5 statements</b>. When you feel well and equilibrated, there are certain <b>activities, thoughts or feelings</b> you tend to have. These will not describe every changing moment, but more a general feeling over a longer time-frame. When you are in a "well" state of mind, these statements usually apply to you.
+    <br>
+    <br>
+    <p>This list will be revised with time. Not only will it warn you when things are getting tough, but it will also bring awareness to the things that keep you balanced. </p>
+    </p1>
+    </div>
+  </div>
+
+
+  </div>
+
+  <div class = "intro2">
+  </div>
+
+  <div class = "intro1">
+  <p>#1 Create Your Checkup</p>
+  </div>
+
+  <div class = "image1"><img src="{% static 'MC/phone1.png' %}" alt="My image" style="width:300px;height:575px;"/></div>
+
+  <div class = "intro1">
+  <p>#2 <a class = "button" href="{% url 'about' %}">Checkup</a> every week</p>
+  </div>
+
+  <div class = "image1"><img src="{% static 'MC/phone2.png' %}" alt="My image" style="width:300px;height:575px;"/></div>
+
+  <div class = "intro1">
+  <p>#3 Keep Track</p>
+  </div>
+
+  <div class = "image1"><img src="{% static 'MC/phone3.png' %}" alt="My image" style="width:300px;height:575px;"/>
+  <br><img src="{% static 'MC/cpu1.png' %}" alt="My image" style="width:800px;height:600px;"/>
+  </div>
+
+  <div class = "intro1">
+  <p>#4 Update Your Checkup</p>
+  <p1>Find your happiest self</p>
+  </div>
+
+  <div class = "image1"><img src="{% static 'MC/happy.png' %}" alt="My image" style="width:672px;height:100px;"/></div>
+
+  <div class = "image1"><img src="{% static 'cycle.png' %}" alt="My image" style="width:300px;height:225px;"/></div>
+
+
+  <div class = "intro1">
+  <p>#5 Keep Learning</p>
+  </div>
+
+  <div class = "intro2">
+  <a class = "button" href="{% url 'login'%}">Login</a> or <a class = "button" href="{% url 'signup' %}">Sign Up </a>
+  </div>
+  {% endblock %}

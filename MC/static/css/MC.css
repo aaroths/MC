@@ -19,15 +19,21 @@ p {
   padding: 100 px;
 }
 
+p1 {
+  font-size: 0.8eM;
+}
+
 li {
   list-style-position:inside;
+}
+
+li.image {
+  list-style-image: url('/static/MC3.png');
 }
 
 ul.check {
   margin-left: 0px;
   padding-left: 0px;
-  ul
-  list-style-type: square;
 }
 
 phelp {
@@ -38,7 +44,6 @@ phelp {
 }
 
 body {
-    padding-left: 15px;
 }
 
 label {
@@ -139,12 +144,69 @@ ul {
   list-style-type: circle;
 }
 
-/*.hidden{
-       display:none;
-    }*/
+.intro1 {
+  background-color: #FFC9C9;
+  border-radius: 0px;
+  padding: 20px 0px 20px 0px;
+  margin-left: 0px;
+  margin-top: 20px;
+  font-size: 2.4eM;
+  text-align: center;
+}
+
+.intro2 {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 100px;
+  font-size: 2.4eM;
+  text-align: center;
+
+}
+
+.intro3 {
+  background-color: #FFC9C9;
+  border-radius: 0px;
+  padding: 20px 0px 20px 0px;
+  margin-left: 0px;
+  margin-top: 20px;
+  font-size: 1.5eM;
+  text-align: center;
+}
+
+.intro4 {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 100px;
+  font-size: 1.5eM;
+  text-align: center;
+}
+
+.intro5 {
+  background-color: #FFC9C9;
+  border-radius: 0px;
+  padding: 20px 15% 20px 15%;
+  margin-left: 0px;
+  margin-top: 20px;
+  font-size: 1.5eM;
+  text-align: left;
+}
+
+.intro6 {
+  background-color: #fff;
+  border-radius: 0px;
+  padding: 20px 15% 20px 15%;
+  margin-left: 0px;
+  margin-top: 20px;
+  font-size: 1.5eM;
+  text-align: left;
+}
 
 .statement_1 {
   /*background-color: #CE7088;F7DFF7*/
+  border-style: solid;
+  border-color: #FFC9C9;
   background-color:#FFC9C9;
   border-radius: 10px 10px 0 0;
   padding: 10px;
@@ -169,6 +231,8 @@ ul {
 
 .statement_3 {
   /*background-color: #B673C1;*/
+  border-style: solid;
+  border-color: #FFC9C9;
   background-color:#FFC9C9;
   padding: 10px;
   margin-top: 0px;
@@ -191,6 +255,8 @@ ul {
 
 .statement_5 {
   /*background-color: #8E70CE;*/
+  border-style: solid;
+  border-color: #FFC9C9;
   background-color:#FFC9C9;
   border-radius: 0 0 10px 10px;
   padding: 10px;
@@ -225,9 +291,9 @@ ul {
 }
 
 .textbox {
-  background-color: #EEEEEE;
+  background-color: #FFC9C9;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 40px 20px 40px;
   margin-top: 20px;
   font-size: 1.5eM;
   opacity: 1;
