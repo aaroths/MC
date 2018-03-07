@@ -4,11 +4,11 @@
 {% block content %}
 
 <div class = "textbox4">
-<p>You have performed <b>{{scores}}</b> Check-Ins with yourself</p>
+<p>You have performed <b>{{scores}}</b> Checkups with yourself</p>
 </div>
 
 {% for x in thislist %}
-  <a href = "/MC/otherscore/{{forloop.counter0}}/"> <p>{{forloop.counter}}) {{x}}</p></a>
+  <p>{{forloop.counter}}) <a href = "/MC/otherscore/{{forloop.counter0}}/"> {{x}} </a></p>
 {% endfor %}
 
 

@@ -271,7 +271,13 @@ form.post-form {
   display:inline;
 }
 
+
 @media screen and (min-width: 799px) {
+
+  .checkup {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 
   .sticky {
     position: fixed;
@@ -364,4 +370,6 @@ li.nav2 {
   li.nav2:hover{
     opacity: 0.6;
   }
+
+
 }

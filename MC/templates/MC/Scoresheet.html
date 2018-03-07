@@ -5,7 +5,7 @@
 {%if pk == "0"%}
 <h2>{{ user.get_username|title }}'s Stats </h2>
 {% else %}
-<h2> Check-In Complete! </h2>
+<h2> Checkup Complete! </h2>
 <h3>STATS</h3>
 {% endif %}
 
@@ -70,7 +70,7 @@ $("button").click(function() {
   <br>
   <p> We believe in you. </p>
   <br>
-  <p> <a href ="{% url 'resources' %}">Here are some resources</a> that you might find valuable:</p>
+  <p> <a href ="{% url 'resources' %}">Here are some resources</a> that you might find valuable</p>
   {%endif%}
 {%endif%}
 </div>
@@ -78,7 +78,7 @@ $("button").click(function() {
 {% endif %}
 
 <div class = "textbox4">
-<p>You have performed <b>{{scores}}</b> Check-Ins with yourself</p>
+<p>You have performed <b>{{scores}}</b> Checkups with yourself</p>
 </div>
 
 {%if pk == "0" %}
