@@ -76,6 +76,15 @@
   <p>If you are having trouble coming up with a statement - <a href={% url 'statement_help' state=statement edits=edit %}><b>this should help.</b></a></p>
   </div>
 
+  <ul class = "check">
+  <h2> Current My Checkup </h2>
+  {% for key, val in questions %}
+    <div class = "statement_{{key}}">
+      <li class = "image">{{val}}</li>
+    </div>
+  {% endfor %}
+  </ul>
+
   {% else %}
   <h2> Sample My Checkup </h2>
   {% for key, val in sample %}
