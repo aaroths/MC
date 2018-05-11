@@ -39,74 +39,77 @@
 
   {%else%}
 
+    </div>
+    <div class = "intro2">
+    <div class = "row">
+    <div class = "col-sm-4">
+    <h3 class = "color"><b>#1</b> Create Your Checkup</h3>
+    <br>
+    <img src="{% static 'MC/one.png' %}" alt="My image" style="width:188px;height:201px;"/>
+    </div>
+    <div class = "col-sm-4">
+    <h3 class = "color"><b>#2</b> Checkup Each Week</h3>
+    <br>
+    <img src="{% static 'MC/two.png' %}" alt="My image" style="width:168px;height:188px;"/>
+    </div>
+    <div class = "col-sm-4">
+    <h3 class = "color"><b>#3</b> Keep Track and Learn</h3>
+    <br>
+    <img src="{% static 'MC/three.png' %}" alt="My image" style="width:261px;height:235px;"/>
+    </div>
+    </div>
+
+    <div id = "clickme" style="display:none">
+    <div class = "col-sm-4">
+    <br>
+    <h4>When you are <b>well</b>, what do you:</h4>
+    <img src="{% static 'MC/four.png' %}" alt="My image" style="width:300px;height:437px;"/>
+    </div>
+    <div class = "col-sm-4">
+    <br>
+    <img src="{% static 'MC/five.png' %}" alt="My image" style="width:300px;height:376px;"/>
+    </div>
+    <div class = "col-sm-4">
+    <br>
+    <img src="{% static 'MC/six.png' %}" alt="My image" style="width:300px;height:466px;"/>
+
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+    <br>
+
+    <div id = "clickme2">
+    <div class = "button2">
+    <button>Tell me more</button>
+    </div>
+    </div>
+
+    <div id = "clickme1" style="display:none">
+    <div class = "button2">
+    <button>Show less</button>
+    </div>
+    </div>
 
     <div class = "intro2">
     <p>  <b>Checkup</b> on yourself </p>
     <img src="{% static 'MC/MC5.png' %}" alt="My image" style="width:106px;height:90px;"/>
     </div>
 
-    <div class = "button2">
-    <button>Tell me more</button>
-    </div>
+
 
     <script>
     $("button").click(function() {
       $( "#clickme" ).toggle();
+      $( "#clickme1" ).toggle();
+      $( "#clickme2" ).toggle();
     });
     </script>
 
-    <div id = "clickme" style="display:none">
-      <h2> <strong>Your own Checkup</strong></h2>
-      <div class = "textbox2">
-      <p>You will work on creating a list of <b>5 statements</b>. When you feel well and equilibrated, there are certain <b>activities, thoughts or feelings</b> you tend to have. These will not describe every changing moment, but more a general feeling over a longer time-frame. When you are in a "well" state of mind, these statements usually apply to you.
-      <br>
-      <br>
-      <p>This list will be revised with time. Not only will it warn you when things are getting tough, but it will also bring awareness to the things that keep you balanced. </p>
-      </p1>
-      </div>
-    </div>
-
-    </div>
-
-    <div class = "intro2">
-    </div>
-
-    <div class = "intro1">
-    <p>#1 Create Your Checkup</p>
-    </div>
-
-    <div class = "image1"><img src="{% static 'MC/phone1.png' %}" alt="My image" style="width:300px;height:575px;"/></div>
-
-    <div class = "intro1">
-    <p>#2 <a class = "button" href="{% url 'about' %}">Checkup</a> every week</p>
-    </div>
-
-    <div class = "image1"><img src="{% static 'MC/phone2.png' %}" alt="My image" style="width:300px;height:575px;"/></div>
-
-    <div class = "intro1">
-    <p>#3 Keep Track</p>
-    </div>
-
-    <div class = "image1"><img src="{% static 'MC/phone3.png' %}" alt="My image" style="width:300px;height:575px;"/></div>
-    <div class = "image1"><img src="{% static 'MC/cpu2.png' %}" alt="My image" style="width:85%;height:62%;"/>
-    </div>
-
-    <div class = "intro1">
-    <p>#4 Update Your Checkup</p>
-    </div>
-    <div class = "intro2">
-    <p1>Find your happiest self</p>
-    </div>
-    <div class = "image1"><img src="{% static 'MC/happy.png' %}" alt="My image" style="width:70%;height:11%;"/></div>
-
-    <div class = "image1"><img src="{% static 'cycle.png' %}" alt="My image" style="width:300px;height:225px;"/></div>
-
-
-    <div class = "intro1">
-    <p>#5 Keep Learning</p>
-    </div>
-
-    <div class = "intro2">
+    <br>
+    <div class = "intro3">
     <a class = "button" href="{% url 'login'%}">Login</a> or <a class = "button" href="{% url 'signup' %}">Sign Up </a>
     </div>
 

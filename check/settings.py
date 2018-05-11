@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cp(0)x*%!toluddgxd!$!9!lr7a&op**jb%$8)tbgal*&#b1*$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','aaroths.pythonanywhere.com','www.mycheckupapp.com']
 

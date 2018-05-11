@@ -7,6 +7,10 @@ h2{
   /*color: #B673C1;*/
 }
 
+h3.color {
+  background-color: #FFC9C9;
+}
+
 h4list{
   padding-bottom: 0px;
   margin-bottom: 0px;
@@ -74,6 +78,7 @@ button:hover {
   text-align: right;
   font-size: 1.5eM;
   margin-top: 15px;
+  margin-right: 15px;
 }
 
 .form {
